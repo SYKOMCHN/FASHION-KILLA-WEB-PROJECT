@@ -1,0 +1,110 @@
+body {
+    background-color: rgb(255, 249, 227);
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.page-cont {
+    background-color: rgb(54, 51, 37); /*remove later*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 100vh;
+}
+
+/*[header content styles]---------------------------------------------------------------------------------------*/
+header {
+    position: fixed;
+    text-align: center;
+    background-color: rgb(28,28,28);
+    width:100vw;
+    margin-top: 0;
+    padding: 5px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+.left_header {
+    display: flex;
+    padding-left: 30px;
+    align-items: center;
+    gap: 20px;
+    float: left;
+}
+
+.right_header {
+    display: flex;
+    padding-top: 20px;
+    padding-right: 50px;
+    align-items: center;
+    gap: 20px;
+    float: right;
+}
+
+.search-bar {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.search_input:focus {
+    outline: none;
+    border-radius: 15px;
+}
+
+/*[main content styles]---------------------------------------------------------------------------------------*/
+.main-content{
+   /* position: absolute;*/
+    height:100vh;
+    margin-top: 140px;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+
+}
+
+.fa-solid:hover {
+    cursor: pointer;
+    color: "orange";
+}
+
+
+
+
+/*body {
+    background-color: rgb(255, 249, 227);
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.page-container {
+    position: flex;
+}
+
+.header {
+    position: fixed;
+    text-align: center;
+    background-color: rgb(28,28,28);
+    width:100vw;
+    margin-top: 0;
+    padding: 10px;
+    z-index: 1;
+}
+
+.main-content {
+    position: absolute;
+    margin-top: 140px;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+}
+
+.background-design {
+    position: absolute;
+    z-index:-1;
+}*/
+
