@@ -1,3 +1,7 @@
+let header = document.getElementById("header");
+let dropdown = document.createElement("div");
+let toggleDropdown = false;
+
 //[menu js content]---------------------------------------------------------------------------------------]
 let menu = document.getElementById("fa-solid fa-bars");
 
@@ -10,10 +14,28 @@ let menu = document.getElementById("fa-solid fa-bars");
         menu.style.color = "rgb(255, 249, 227)";
     });
 
-   // menu.addEventListener("click", () => {
-    //    let dropdown = document.createElementID("dropdown-content");
-        
-    //});
+    menu.addEventListener("click", () => {
+        console.log("menu click works");
+
+        if(toggleDropdown == false) {
+            dropdown.className = "dropdown_content";
+            dropdown.id = "dropdown_content";
+            dropdown.style.position = "absolute";
+            dropdown.textContent = "Dropdown Menu Content Located";
+            dropdown.style.width = "150px";
+            dropdown.style.height = "100vh";
+            dropdown.style.left = "10px";
+            dropdown.style.backgroundColor = "rgb(255, 249, 227)";
+            toggleDropdown = true;
+            header.appendChild(dropdown);
+        }
+        else {
+            console.log("menu closed");
+            toggleDropdown = false;
+            header.removeChild(dropdown);
+        }
+    });
+
 
 //[title js content]---------------------------------------------------------------------------------------]
 let title = document.querySelector("h1");
@@ -52,6 +74,7 @@ let help = document.getElementById("fa-regular fa-circle-question");
 let cart = document.getElementById("fa-solid fa-cart-shopping");
 
     cart.addEventListener("mouseenter", () => {
+        console.log("hovered");
         cart.style.cursor = "pointer";
         cart.style.color = "orange";
     });
