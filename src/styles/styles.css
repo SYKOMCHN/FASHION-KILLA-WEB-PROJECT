@@ -1,6 +1,6 @@
 body {
     background-color: rgb(255, 249, 227);
-    font-family: sans-serif;
+    font-family: sans-serif; /* body font */
     margin: 0;
     padding: 0;
 }
@@ -27,7 +27,7 @@ header {
 
 .navigation {
     display: flex;
-    background-color: rgb(28,28,28);
+    background-color: rgb(28,28,28); /* header color */
     padding: 5px;
     margin-top: 0;
     justify-content: space-between;
