@@ -68,25 +68,65 @@ function dropdownMenu() {
                     listItem.addEventListener("click", () => {
                         listItem.style.boxShadow = "0px 0px rgba(194,41,12, 0.75)";
                         if(menuItems[i] == "HOME") {
-                            window.location.href = "index.html";
+                            if(window.location.href.endsWith("index.html")) {
+                                window.location.href = "index.html";
+                            } else {
+                                window.location.href = "../../index.html";
+                            }  
                         }else if(menuItems[i] == "MEN") {
-                            window.location.href = "src/pages/men.html";
+                           if(window.location.href.indexOf("src/pages") > -1) {
+                                window.location.href = "men.html";
+                            } else {
+                                window.location.href = "src/pages/men.html";
+                            } 
                         }else if(menuItems[i] == "WOMEN") {
-                            window.location.href = "src/pages/women.html";
+                            if(window.location.href.indexOf("src/pages") > -1) {
+                                window.location.href = "women.html";
+                            }else {
+                                 window.location.href = "src/pages/women.html";
+                            }
                         }else if(menuItems[i] == "BOYS") {
-                            window.location.href = "src/pages/boys.html";
+                            if(window.location.href.indexOf("src/pages") > -1) {
+                                window.location.href = "boys.html";
+                            }else {
+                                window.location.href = "src/pages/boys.html";
+                            }
                         }else if(menuItems[i] == "GIRLS") {
-                            window.location.href = "src/pages/girls.html";
+                            if(window.location.href.indexOf("src/pages") > -1) {
+                                window.location.href = "girls.html";
+                            }else{
+                                window.location.href = "src/pages/girls.html";
+                            }
                         }else if(menuItems[i] == "DEALS") {
-                            window.location.href = "src/pages/deals.html";
+                            if(window.location.href.indexOf("src/pages") > -1) {
+                                window.location.href = "deals.html";
+                            }else {
+                                window.location.href = "src/pages/deals.html";
+                            }
                         }else if(menuItems[i] == "STYLES") {
-                            window.location.href = "src/pages/collection.html";
+                            if(window.location.href.indexOf("src/pages") > -1) {
+                                window.location.href = "collection.html";
+                            }else{
+                                window.location.href = "src/pages/collection.html";
+                            }
                         }else if(menuItems[i] == "CHECKOUT") {
-                            window.location.href = "src/pages/checkout.html";
-                        }   else if(menuItems[i] == "ABOUT") {
-                            window.location.href = "src/pages/about.html";
+                            if(window.location.href.indexOf("src/pages") > -1) {
+                                window.location.href = "checkout.html";
+                            }else{
+                                window.location.href = "src/pages/checkout.html";
+                            }
+                        }else if(menuItems[i] == "ABOUT") {
+                            if(window.location.href.indexOf("src/pages") > -1) {
+                                window.location.href = "about.html";
+                            }else{
+                                window.location.href = "src/pages/about.html";
+                            }
                         }else if(menuItems[i] == "HELP") {
-                            window.location.href = "src/pages/help.html";
+                            if(window.location.href.indexOf("src/pages") > -1) {
+                                window.location.href = "help.html";
+                            }else{
+                                window.location.href = "src/pages/help.html";
+                            }
                         }
 
                     });
@@ -134,8 +174,11 @@ let title = document.querySelector("h1");
     });
 
     title.addEventListener("click", () => {
-        window.location.href = "index.html";
-        
+        if(window.location.href.endsWith("index.html")) {
+            window.location.href = "index.html";
+        } else {
+            window.location.href = "../../index.html";
+        }  
     });
 
 //[help button js content]---------------------------------------------------------------------------------------]
@@ -152,7 +195,11 @@ let help = document.getElementById("fa-regular fa-circle-question");
     });
 
     help.addEventListener("click", () => {
-        window.location.href = "src/pages/help.html";
+        if(window.location.href.indexOf("src/pages") > -1) {
+            window.location.href = "help.html";
+        }else{
+            window.location.href = "src/pages/help.html";
+        }
     });
 
 //[cart button js content]---------------------------------------------------------------------------------------]
@@ -178,14 +225,24 @@ function dropCart(){
     if(toggleCart == false) {
         console.log("cart opened");
 
-
         cartDrop.style.float = "right";
         cartDrop.style.width = "20vw";
         cartDrop.style.height = "40vh";
+        cartDrop.style.padding = "20px";
         cartDrop.style.backgroundColor = "rgb(28,28,28)";
-        cartDrop.style.boxShadow = "0px 0px 10px rgba(0,0,0,0.5)";
+        cartDrop.style.margin = "0";
+        cartDrop.style.justifyContent = "center";
         toggleCart = true;
         header.appendChild(cartDrop);
+
+        let cartPage = document.createElement("div");
+        cartPage.style.position = "absolute";
+        cartPage.style.width = "20vw";
+        cartPage.style.height = "40vh";
+        cartPage.style.backgroundColor = "rgb(255, 249, 227)";
+        cartDrop.appendChild(cartPage);
+
+        //CART CONTENT HERE - 
     }
     else {
         console.log("cart closed");
