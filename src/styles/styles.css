@@ -6,7 +6,7 @@ body {
 }
 
 .page-cont {
-    /*background-color: rgb(54, 51, 37); /*remove later*/
+    /*background-color: rgb(54, 51, 37); remove later*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,25 +14,14 @@ body {
     min-height: 100vh;
 }
 
-
-/*[header content styles]---------------------------------------------------------------------------------------*/
 header {
     position: fixed;
     text-align: center;
-    /*background-color: rgba(122, 110, 110, 0.5);*/
-    width:100vw;
-    z-index: 1;
-
-}
-
-.navigation {
-    display: flex;
     background-color: rgb(28,28,28);
-    padding: 5px;
-    height: 5vh;
+    width:100vw;
     margin-top: 0;
-    justify-content: space-between;
-    align-items: center;
+    padding: 5px;
+    z-index: 1;
     top: 0;
     left: 0;
 }
@@ -46,13 +35,13 @@ header {
 }
 
 .right_header {
-    display: flex;;
-    padding-right: 30px;
+    display: flex;
+    padding-top: 20px;
+    padding-right: 50px;
     align-items: center;
     gap: 20px;
     float: right;
 }
-
 
 .search-bar {
     padding: 5px;
@@ -73,5 +62,10 @@ header {
     justify-content: center;
     align-items: center;
     z-index: 0;
-
 }
+
+.background-design {
+    position: absolute;
+    z-index:-1;
+}*/
+
