@@ -67,10 +67,9 @@ header {
 
 
 /*[main content styles]---------------------------------------------------------------------------------------*/
-.main-content{
-   /* position: absolute;*/
-    height:100vh;
-    margin-top: 140px;
+.body_content{
+    /*height:100vh;
+    margin-top: 10vh;*/
     justify-content: center;
     align-items: center;
     z-index: 0;

@@ -1,12 +1,1 @@
-/*modifications to index.html*/
-
-/*.image_cont {}*/
-
-.main-img {
-    width: 300px;
-    height: auto;
-    border-radius: 10px;
-    justify-content: right;
-}
-
-/*style = "width: 600px; height: auto; border-radius: 10px; justify-content: right;" */
+/* stylize index.html */
