@@ -255,6 +255,46 @@ function dropCart(){
 
 
         //CART CONTENT HERE -
+        
+        // helper that fetches and renders the cart contents
+        function refreshCart() {
+            fetch("/cart_contents").then(r => r.text()).then(html => {
+                cartPage.innerHTML = html;
+
+                // attach remove handlers 
+                cartPage.querySelectorAll(".cart-remove").forEach(btn => {
+                    // use onclick to overwrite any existing listener
+                    btn.onclick = function (e) {
+                        const id = this.dataset.id;
+                        fetch("/remove_from_cart/" + id, { method: "POST" })
+                            .then(() => {
+                                // re-render after removal
+                                refreshCart();
+                            });
+                    };
+                });
+
+                // attach checkout button
+                const checkout = cartPage.querySelector("#checkout_btn");
+                if (checkout) {
+                    checkout.onclick = () => {
+                        if (window.location.href.indexOf("src/pages") > -1) {
+                            window.location.href = "checkout.html";
+                        } else {
+                            window.location.href = "src/pages/checkout.html";
+                        }
+                    };
+                }
+            });
+        }
+
+        // make refreshCart callable from other scripts
+        window.refreshCart = refreshCart;
+
+        // initial render
+        refreshCart();
+
+
     }
     else {
         console.log("cart closed");
@@ -296,7 +336,5 @@ function dropCart(){
         });
     }
 })();
-
-
 
 

@@ -20,15 +20,8 @@ CREATE TABLE IF NOT EXISTS products (
 INSERT INTO products (name, price, category, image, description, stock) VALUES
 ('Black Tee', 19.99, 'mens', 'assets/extras/yessir.png', 'Comfortable cotton tee', 20),
 ('Denim Jacket', 59.99, 'mens', 'assets/extras/yessir.png', 'Classic denim jacket', 8),
-('breBlack Tee', 19.99, 'mens', 'assets/extras/yessir.png', 'Comfortable cotton tee', 20),
-('erbdtDenim Jacket', 59.99, 'mens', 'assets/extras/yessir.png', 'Classic denim jacket', 8),
-('rtdtdrtBlack Tee', 19.99, 'mens', 'assets/extras/yessir.png', 'Comfortable cotton tee', 20),
-('Dedrtdrnim Jacket', 59.99, 'mens', 'assets/extras/yessir.png', 'Classic denim jacket', 8),
-('Blrtack Tee', 19.99, 'mens', 'assets/extras/yessir.png', 'Comfortable cotton tee', 20),
-('Dendrtim Jacket', 59.99, 'mens', 'assets/extras/yessir.png', 'Classic denim jacket', 8),
-('Bladck Tee', 19.99, 'mens', 'assets/extras/yessir.png', 'Comfortable cotton tee', 20),
-('Dedrtnim Jacket', 59.99, 'mens', 'assets/extras/yessir.png', 'Classic denim jacket', 8),
 ('White Sneakers', 79.99, 'womens', 'assets/extras/yessir.png', 'Lightweight running sneakers', 12);
+('Blue Tee', 79.99, 'Youth', 'assets/extras/yessir.png', 'comfy blue cotton tee', 12);
 """
 
 
