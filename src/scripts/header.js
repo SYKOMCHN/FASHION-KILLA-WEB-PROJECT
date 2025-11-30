@@ -272,4 +272,38 @@ function dropCart(){
 }
 
 
+// search bar functionality
+(function () {
+    const searchInput = document.querySelector(".search_input");
+
+    // the magnifying glass inside the search bar
+    const searchIcon = document.querySelector(".search_bar .fa-magnifying-glass") || document.querySelector(".search_bar i.fa-magnifying-glass");
+
+    function goSearch() {
+        if (!searchInput) return;
+        const q = (searchInput.value || "").trim();
+        // Flask renders the results
+        window.location.href = "/search?q=" + encodeURIComponent(q);
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                goSearch();
+            }
+        });
+    }
+
+    if (searchIcon) {
+        searchIcon.style.cursor = "pointer";
+        searchIcon.addEventListener("click", (e) => {
+            e.preventDefault();
+            goSearch();
+        });
+    }
+})();
+
+
+
 

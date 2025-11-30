@@ -61,7 +61,36 @@ def men_short():
     products = query_products(category="mens")
     return render_template("src/pages/men.html", products=products)
 
+# search route
+@app.route("/search")
+def search():
+    q = (request.args.get("q") or "").strip() # get the search query
+    products = []
+    if q:
+        db = get_db()
+        cur = db.cursor()
+        like = f"%{q}%"
+        cur.execute(
+            """
+            SELECT * FROM products
+            WHERE LOWER(name) LIKE LOWER(?)
+               OR LOWER(description) LIKE LOWER(?)
+               OR LOWER(category) LIKE LOWER(?)
+            """,
+            (like, like, like),
+        )
+        rows = cur.fetchall()
+        for r in rows:
+            p = dict(r)
+            img = p.get("image") or ""
+            if img and not (img.startswith("/") or img.startswith("..")):
+                p["img_url"] = "../../" + img
+            else:
+                p["img_url"] = img or "../../assets/extras/yessir.png"
+            products.append(p)
 
+    # render the search.html page with the results
+    return render_template("src/pages/search.html", products=products, query=q)
 
 
 if __name__ == "__main__":

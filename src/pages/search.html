@@ -5,46 +5,63 @@
   <meta name="viewport" content="width=device-width" />
   <title>[GIODRIPPS]: SEARCH</title>
 
+  <link rel="stylesheet" href="/src/styles/styles.css">
+  <link rel="stylesheet" href="/src/styles/bigmans.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="../styles/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
   <div class="page-cont">
-    <header class="header" id="header">
-      <div class="navigation" id="navigation">
+    <header id="header">
+      <div id="nav">
         <div class="left_header">
           <div class="menu">
-            <i class="fa-solid fa-bars" id="fa-solid fa-bars" style="color: rgb(255, 249, 227); font-size:xx-large;"></i>
+            <i class="fa-solid fa-bars" id="menu_bar" style="color: rgb(255, 249, 227); font-size:xx-large;"></i>
           </div>
           <h1 style="color: rgb(255, 249, 227); position: flex;">GIODRIPPS</h1>
         </div>
-        <div style="width: 10vw;"></div>
+
         <div class="right_header">
           <div class="search_bar" style="background-color: rgb(255, 249, 227); border-radius: 15px; padding: 5px;">
             <i class="fa-solid fa-magnifying-glass" style="color: rgb(28,28,28); font-size:medium;"></i>
-            <input type="text" placeholder="Search..." class="search_input" style="border: none; background-color: transparent; font-size:large;">
+            <input type="text" placeholder="Search..." class="search_input" style="border: none; background-color: transparent; font-size:large;" value="{{ query|e }}">
           </div>
-          <i class="fa-regular fa-circle-question" id="fa-regular fa-circle-question" style="color: rgb(255, 249, 227); font-size:xx-large;"></i>
-          <i class="fa-solid fa-cart-shopping" id="fa-solid fa-cart-shopping" style="color: rgb(255, 249, 227); font-size:xx-large;"></i>
+          <i class="fa-regular fa-circle-question" id="help_button" style="color: rgb(255, 249, 227); font-size:xx-large;"></i>
+          <i class="fa-solid fa-cart-shopping" id="shop_cart" style="color: rgb(255, 249, 227); font-size:xx-large;"></i>
         </div>
       </div>
     </header>
 
-    <main>
-      <h2 class="section-title" id="search-heading">Search</h2>
+    <div class="body_content" id="body_content">
 
-      <div class="clothing-grid" id="search-results">
-        <!-- JS will render matching .item-card elements here -->
+      <h2 class="section-title">Search Results{% if query %} for “{{ query|e }}”{% endif %}</h2> 
+
+      <div class="clothing-grid">
+        {% if products and products|length > 0 %}
+          {% for p in products %}
+            <div class="item-card">
+              <div class="item-img">
+                <img src="{{ p.img_url }}" alt="{{ p.name }}">
+              </div>
+              <p class="item-name">{{ p.name }}</p>
+              <p class="item-price">${{ '%.2f'|format(p.price) }}</p>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div style="width:100%; text-align:center; padding:60px 20px;">
+            <p style="font-size:1.1rem; color:#333;">
+              No results found.
+            </p>
+          </div>
+        {% endif %}
       </div>
-    </main>
+    </div>
 
     <div class="background_design"></div>
   </div>
 
-  <!-- reuse your header script so menu/title/cart still work -->
-  <script src="../scripts/header.js"></script>
-  <!-- search rendering logic -->
-  <script src="../scripts/search.js"></script>
+  
+  <script src="/src/scripts/header.js"></script>
 </body>
 </html>
