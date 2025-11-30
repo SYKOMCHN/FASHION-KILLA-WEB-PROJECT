@@ -1,0 +1,105 @@
+/* --- men's page --- */
+
+
+.clothing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+    gap: 25px; 
+    width: 90%;
+    max-width: 1400px;
+    margin: 20px auto;
+    animation: fadeIn 0.8s ease;
+}
+
+.item-card {
+    text-align: center;
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 14px;
+    transition: 0.25s ease;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    cursor: pointer;
+}
+
+.item-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-color: rgb(28,28,28);
+}
+
+
+.item-img {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+
+.item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.25s ease-in-out;
+}
+
+.item-card:hover img {
+    transform: scale(1.10);
+}
+
+
+.item-name {
+    font-size: 1.25rem;
+    margin-top: 14px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #222;
+}
+
+
+.item-price {
+    font-size: 1.1rem;
+    margin-top: 6px;
+    color: #444;
+}
+
+
+.section-title {
+    font-size: 2rem;
+    margin-top: 120px;
+    margin-bottom: 25px;
+    color: rgb(28,28,28);
+    font-weight: 700;
+    text-align: center;
+}
+
+/* makes the layout responsive */
+@media (max-width: 1100px) {
+    .clothing-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 800px) {
+    .clothing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .clothing-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

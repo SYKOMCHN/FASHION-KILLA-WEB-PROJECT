@@ -1,1 +1,79 @@
 /* stylize index.html */
+
+.main_content{
+   /* background-color: brown; */
+    justify-items: center;
+    text-align: center;
+    width: 100vw;
+    height:100vh;
+    padding-top: 13vh;
+    margin: 0;
+}
+/*[front page image content]------------------------------------------------*/
+.img_content{   
+    background-color: rgb(28,28,28);
+    width:100vw;
+    height:80vh;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.main_img1 {
+    width: max-content;
+    object-fit: cover;
+}
+/*[men and women link]------------------------------------------------------*/
+.section1{ 
+    position: absolute;
+    display: flex;
+    background-color: rgb(73, 69, 45);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.men_select{
+    position: relative;
+    background-color: rgb(28,28,28);
+    height:90vh;
+    justify-content: center;
+    
+}
+
+.main_men{
+    object-fit: cover;
+    display: block;
+}
+
+.women_select{
+    position:relative;
+    background-color: rgb(28,28,28);
+    height:90vh;
+    justify-content: center;
+}
+
+.main_women{
+ 
+    object-fit: cover;
+    display: block;
+    transform: translate(-120px,-275px);
+}
+
+
+    
+/*[youth link]-------------------------------------------------------*/
+.section2{ 
+    background-color: rgb(112, 72, 39);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+.section3{ 
+    background-color: rgb(132, 149, 221);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+

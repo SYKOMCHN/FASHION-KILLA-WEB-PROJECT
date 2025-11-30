@@ -4,27 +4,32 @@ let cartDrop = document.createElement("div");
 let toggleDropdown = false;
 let toggleCart = false;
 
+
 //[menu js content]---------------------------------------------------------------------------------------]
-let menu = document.getElementById("fa-solid fa-bars");
+let menu = document.getElementById("menu_bar");
+
 
     menu.addEventListener("mouseenter", () => {
         menu.style.cursor = "pointer";
         menu.style.color = "rgb(194,41,12)";
     });
 
+
     menu.addEventListener("mouseleave", () => {
         menu.style.color = "rgb(255, 249, 227)";
     });
+
 
     menu.addEventListener("click", () => {
         console.log("menu click works");
         dropdownMenu();
     });
 
+
 //[dropdown menu js content]---------------------------------------------------------------------------------------
 function dropdownMenu() {
          if(toggleDropdown == false) {
-            
+           
             menuDrop.style.position = "absolute";
             menuDrop.style.width = "100vw";
             menuDrop.style.height = "100vh";
@@ -32,7 +37,7 @@ function dropdownMenu() {
             toggleDropdown = true;
             header.appendChild(menuDrop);
             //
-            let menuList = document.createElement("div"); 
+            let menuList = document.createElement("div");
             menuList.style.height = " 100vh";
             menuList.style.width = "25vw";
             menuList.style.margin = "0";
@@ -42,7 +47,8 @@ function dropdownMenu() {
             menuList.style.paddingRight = "55px";
             menuDrop.appendChild(menuList);
             //
-            let menuItems = ["HOME","", "MEN","","WOMEN","","BOYS","","GIRLS","","DEALS","","STYLES","","CHECKOUT","","ABOUT","","HELP"];
+            let menuItems = ["HOME","", "MEN","","WOMEN","","YOUTH","","DEALS","","STYLES","","CHECKOUT","","ABOUT","","HELP"];
+
 
             for(let i = 0; i < menuItems.length; i++) {
                 let listItem = document.createElement("div");
@@ -50,11 +56,12 @@ function dropdownMenu() {
                 if (menuItems[i] != "") {
                     listItem.style.color = "rgb(28,28,28)";
                     listItem.style.fontSize = "1.25vw";
-                    listItem.style.fontWeight = "bold"; 
+                    listItem.style.fontWeight = "bold";
                     listItem.style.backgroundColor = "rgb(255, 249, 227)";
                     listItem.style.boxShadow = "0px 5px rgba(255, 249, 227, 0.75)";
                     listItem.style.padding = "10px";
                     listItem.style.cursor = "pointer";
+
 
                     listItem.addEventListener("mouseenter", () => {
                         listItem.style.backgroundColor = "rgb(194,41,12)";
@@ -64,6 +71,7 @@ function dropdownMenu() {
                         listItem.style.backgroundColor = "rgb(255, 249, 227)";
                         listItem.style.boxShadow = "0px 5px rgba(255, 249, 227, 0.75)";
                     });
+
 
                     listItem.addEventListener("click", () => {
                         listItem.style.boxShadow = "0px 0px rgba(194,41,12, 0.75)";
@@ -78,24 +86,18 @@ function dropdownMenu() {
                                 window.location.href = "men.html";
                             } else {
                                 window.location.href = "src/pages/men.html";
-                            } 
+                            }
                         }else if(menuItems[i] == "WOMEN") {
                             if(window.location.href.indexOf("src/pages") > -1) {
                                 window.location.href = "women.html";
                             }else {
                                  window.location.href = "src/pages/women.html";
                             }
-                        }else if(menuItems[i] == "BOYS") {
+                        }else if(menuItems[i] == "YOUTH") {
                             if(window.location.href.indexOf("src/pages") > -1) {
-                                window.location.href = "boys.html";
+                                window.location.href = "youth.html";
                             }else {
-                                window.location.href = "src/pages/boys.html";
-                            }
-                        }else if(menuItems[i] == "GIRLS") {
-                            if(window.location.href.indexOf("src/pages") > -1) {
-                                window.location.href = "girls.html";
-                            }else{
-                                window.location.href = "src/pages/girls.html";
+                                window.location.href = "src/pages/youth.html";
                             }
                         }else if(menuItems[i] == "DEALS") {
                             if(window.location.href.indexOf("src/pages") > -1) {
@@ -129,6 +131,7 @@ function dropdownMenu() {
                             }
                         }
 
+
                     });
                     menuList.appendChild(listItem);
                 }
@@ -139,17 +142,6 @@ function dropdownMenu() {
                 }
             }
 
-           /* let dropFooter = document.createElement("div");
-            dropFooter.style.position = "absolute";
-            dropFooter.style.fontFamily = "sans-serif";
-            dropFooter.style.fontSize = "1vw";
-            dropFooter.style.fontWeight = "bold";
-            dropFooter.style.marginTOp = "50px";
-            dropFooter.textContent = "© 2025 GIODRIPPS Inc. All rights reserved.";
-            dropFooter.style.color = "rgb(255, 249, 227)";
-            */
-            //menuList.appendChild(dropFooter);
-           
         }
         else {
             console.log("menu closed");
@@ -158,20 +150,26 @@ function dropdownMenu() {
         }
 }
 
+
 //[title js content]---------------------------------------------------------------------------------------]
 
+
 let title = document.querySelector("h1");
+
 
     title.addEventListener("mouseenter", () => {
         title.style.cursor = "pointer";
         title.style.color = "rgb(194,41,12)";
     });
 
+
     title.addEventListener("mouseleave", () => {
         title.style.cursor = "default";
         title.style.color = "rgb(255, 249, 227)";
 
+
     });
+
 
     title.addEventListener("click", () => {
         if(window.location.href.endsWith("index.html")) {
@@ -181,18 +179,22 @@ let title = document.querySelector("h1");
         }  
     });
 
+
 //[help button js content]---------------------------------------------------------------------------------------]
 
-let help = document.getElementById("fa-regular fa-circle-question");
+let help = document.getElementById("help_button");
+
 
     help.addEventListener("mouseenter", () => {
         help.style.cursor = "pointer";
         help.style.color = "rgb(194,41,12)";
     });
 
+
     help.addEventListener("mouseleave", () => {
         help.style.color = "rgb(255, 249, 227)";
     });
+
 
     help.addEventListener("click", () => {
         if(window.location.href.indexOf("src/pages") > -1) {
@@ -202,9 +204,11 @@ let help = document.getElementById("fa-regular fa-circle-question");
         }
     });
 
+
 //[cart button js content]---------------------------------------------------------------------------------------]
 
-let cart = document.getElementById("fa-solid fa-cart-shopping");
+let cart = document.getElementById("shop_cart");
+
 
     cart.addEventListener("mouseenter", () => {
         console.log("hovered");
@@ -212,20 +216,26 @@ let cart = document.getElementById("fa-solid fa-cart-shopping");
         cart.style.color = "rgb(194,41,12)";
     });
 
+
     cart.addEventListener("mouseleave", () => {
         cart.style.color = "rgb(255, 249, 227)";
     });
+
 
     cart.addEventListener("click", () => {
         dropCart();
     });
 
+
 function dropCart(){
+
 
     if(toggleCart == false) {
         console.log("cart opened");
 
-        cartDrop.style.float = "right";
+
+        cartDrop.style.position = "absolute";
+        cartDrop.style.right = "0vw";
         cartDrop.style.width = "20vw";
         cartDrop.style.height = "40vh";
         cartDrop.style.padding = "20px";
@@ -235,6 +245,7 @@ function dropCart(){
         toggleCart = true;
         header.appendChild(cartDrop);
 
+
         let cartPage = document.createElement("div");
         cartPage.style.position = "absolute";
         cartPage.style.width = "20vw";
@@ -242,12 +253,17 @@ function dropCart(){
         cartPage.style.backgroundColor = "rgb(255, 249, 227)";
         cartDrop.appendChild(cartPage);
 
-        //CART CONTENT HERE - 
+
+        //CART CONTENT HERE -
     }
     else {
         console.log("cart closed");
         toggleCart = false;
         header.removeChild(cartDrop);
-    }   
+    }  
+
 
 }
+
+
+
