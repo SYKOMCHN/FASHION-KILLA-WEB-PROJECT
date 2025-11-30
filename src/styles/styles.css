@@ -13,7 +13,7 @@ body {
     min-height: 100vh;
 }
 
-header {
+#header {
     position: fixed;
     text-align: center;
     background-color: rgba(28, 28, 28, 1);
@@ -27,12 +27,18 @@ header {
     background-color: rgb(28,28,28);
     padding: 5px;
     margin-top: 0;
-    padding: 5px;
     z-index: 1;
     top: 0;
     left: 0;
 } 
 
+
+#nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
 
 .left_header {
     display: flex;
@@ -44,7 +50,6 @@ header {
 
  .right_header {
     display: flex;
-    padding-top: 20px;
     padding-right: 50px;
     align-items: center;
     gap: 20px;
