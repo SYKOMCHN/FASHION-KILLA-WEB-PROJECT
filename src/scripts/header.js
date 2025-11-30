@@ -6,7 +6,7 @@ let toggleCart = false;
 
 
 //[menu js content]---------------------------------------------------------------------------------------]
-let menu = document.getElementById("fa-solid fa-bars");
+let menu = document.getElementById("menu_bar");
 
 
     menu.addEventListener("mouseenter", () => {
@@ -201,7 +201,7 @@ let title = document.querySelector("h1");
 //[help button js content]---------------------------------------------------------------------------------------]
 
 
-let help = document.getElementById("fa-regular fa-circle-question");
+let help = document.getElementById("help_page");
 
 
     help.addEventListener("mouseenter", () => {
@@ -227,7 +227,7 @@ let help = document.getElementById("fa-regular fa-circle-question");
 //[cart button js content]---------------------------------------------------------------------------------------]
 
 
-let cart = document.getElementById("fa-solid fa-cart-shopping");
+let cart = document.getElementById("shop_cart");
 
 
     cart.addEventListener("mouseenter", () => {
