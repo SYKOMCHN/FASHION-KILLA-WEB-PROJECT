@@ -46,6 +46,11 @@
               </div>
               <p class="item-name">{{ p.name }}</p>
               <p class="item-price">${{ '%.2f'|format(p.price) }}</p>
+
+              <!-- add to cart button -->
+              <button class="add-to-cart" data-id="{{ p.id }}" style="margin-top:8px; padding:8px 10px; border-radius:8px; border:none; background:rgb(28,28,28); color:#fff; cursor:pointer;">
+                <i class="fa-solid fa-cart-shopping"></i> Add to cart
+              </button>
             </div>
           {% endfor %}
         {% else %}

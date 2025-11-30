@@ -1,12 +1,13 @@
 import os
 import sqlite3
-from flask import Flask, g, render_template, jsonify, request, abort, url_for
+from flask import Flask, g, render_template, jsonify, request, abort, url_for, session
 
 app = Flask(__name__, static_folder='.', static_url_path='', template_folder='.')
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "data", "products.db")
 
-
+# secret key for sessions
+app.secret_key = os.environ.get("SECRET_KEY", "boopyboopboope")
 
 def get_db():
     db = getattr(g, "_database", None)
