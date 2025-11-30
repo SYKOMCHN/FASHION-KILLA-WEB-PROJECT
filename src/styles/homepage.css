@@ -24,13 +24,45 @@
 }
 /*[men and women link]------------------------------------------------------*/
 .section1{ 
-    background-color: aqua;
+    position: absolute;
+    display: flex;
+    background-color: rgb(73, 69, 45);
     width: 100vw;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
-/*[boys and girl link]-------------------------------------------------------*/
+.men_select{
+    position: relative;
+    background-color: rgb(28,28,28);
+    height:90vh;
+    justify-content: center;
+    
+}
+
+.main_men{
+    object-fit: cover;
+    display: block;
+}
+
+.women_select{
+    position:relative;
+    background-color: rgb(28,28,28);
+    height:90vh;
+    justify-content: center;
+}
+
+.main_women{
+ 
+    object-fit: cover;
+    display: block;
+    transform: translate(-120px,-275px);
+}
+
+
+    
+/*[youth link]-------------------------------------------------------*/
 .section2{ 
     background-color: rgb(112, 72, 39);
     width: 100vw;
@@ -44,3 +76,4 @@
     height: 100vh;
     margin: 0;
 }
+
