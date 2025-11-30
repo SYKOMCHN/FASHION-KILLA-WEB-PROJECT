@@ -1,1 +1,46 @@
 /* stylize index.html */
+
+.main_content{
+   /* background-color: brown; */
+    justify-items: center;
+    text-align: center;
+    width: 100vw;
+    height:100vh;
+    padding-top: 10vh;
+    margin: 0;
+}
+/*[front page image content]------------------------------------------------*/
+.img_content{   
+    background-color: rgb(28,28,28);
+    width:100vw;
+    height:85vh;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.main_img1 {
+    width: max-content;
+    object-fit: cover;
+}
+/*[men and women link]------------------------------------------------------*/
+.section1{ 
+    background-color: aqua;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+/*[boys and girl link]-------------------------------------------------------*/
+.section2{ 
+    background-color: rgb(112, 72, 39);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+.section3{ 
+    background-color: rgb(132, 149, 221);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
