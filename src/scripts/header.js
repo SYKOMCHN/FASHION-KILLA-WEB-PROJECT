@@ -5,7 +5,7 @@ let toggleDropdown = false;
 let toggleCart = false;
 
 //[menu js content]---------------------------------------------------------------------------------------]
-let menu = document.getElementById("fa-solid fa-bars");
+let menu = document.getElementById("menu_bar");
 
     menu.addEventListener("mouseenter", () => {
         menu.style.cursor = "pointer";
@@ -139,17 +139,6 @@ function dropdownMenu() {
                 }
             }
 
-           /* let dropFooter = document.createElement("div");
-            dropFooter.style.position = "absolute";
-            dropFooter.style.fontFamily = "sans-serif";
-            dropFooter.style.fontSize = "1vw";
-            dropFooter.style.fontWeight = "bold";
-            dropFooter.style.marginTOp = "50px";
-            dropFooter.textContent = "© 2025 GIODRIPPS Inc. All rights reserved.";
-            dropFooter.style.color = "rgb(255, 249, 227)";
-            */
-            //menuList.appendChild(dropFooter);
-           
         }
         else {
             console.log("menu closed");
@@ -183,7 +172,7 @@ let title = document.querySelector("h1");
 
 //[help button js content]---------------------------------------------------------------------------------------]
 
-let help = document.getElementById("fa-regular fa-circle-question");
+let help = document.getElementById("help_button");
 
     help.addEventListener("mouseenter", () => {
         help.style.cursor = "pointer";
@@ -204,7 +193,7 @@ let help = document.getElementById("fa-regular fa-circle-question");
 
 //[cart button js content]---------------------------------------------------------------------------------------]
 
-let cart = document.getElementById("fa-solid fa-cart-shopping");
+let cart = document.getElementById("shop_cart");
 
     cart.addEventListener("mouseenter", () => {
         console.log("hovered");
@@ -225,7 +214,9 @@ function dropCart(){
     if(toggleCart == false) {
         console.log("cart opened");
 
-        cartDrop.style.float = "right";
+
+        cartDrop.style.position = "absolute";
+        cartDrop.style.right = "0vw";
         cartDrop.style.width = "20vw";
         cartDrop.style.height = "40vh";
         cartDrop.style.padding = "20px";
