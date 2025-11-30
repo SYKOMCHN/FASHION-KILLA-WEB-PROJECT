@@ -47,7 +47,7 @@ function dropdownMenu() {
             menuList.style.paddingRight = "55px";
             menuDrop.appendChild(menuList);
             //
-            let menuItems = ["HOME","", "MEN","","WOMEN","","BOYS","","GIRLS","","DEALS","","STYLES","","CHECKOUT","","ABOUT","","HELP"];
+            let menuItems = ["HOME","", "MEN","","WOMEN","","YOUTH","","DEALS","","STYLES","","CHECKOUT","","ABOUT","","HELP"];
 
 
             for(let i = 0; i < menuItems.length; i++) {
@@ -93,17 +93,11 @@ function dropdownMenu() {
                             }else {
                                  window.location.href = "src/pages/women.html";
                             }
-                        }else if(menuItems[i] == "BOYS") {
+                        }else if(menuItems[i] == "YOUTH") {
                             if(window.location.href.indexOf("src/pages") > -1) {
-                                window.location.href = "boys.html";
+                                window.location.href = "youth.html";
                             }else {
-                                window.location.href = "src/pages/boys.html";
-                            }
-                        }else if(menuItems[i] == "GIRLS") {
-                            if(window.location.href.indexOf("src/pages") > -1) {
-                                window.location.href = "girls.html";
-                            }else{
-                                window.location.href = "src/pages/girls.html";
+                                window.location.href = "src/pages/youth.html";
                             }
                         }else if(menuItems[i] == "DEALS") {
                             if(window.location.href.indexOf("src/pages") > -1) {
