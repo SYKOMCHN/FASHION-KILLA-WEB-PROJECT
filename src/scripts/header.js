@@ -16,7 +16,7 @@ let menu = document.getElementById("menu_bar");
 
 
     menu.addEventListener("mouseleave", () => {
-        menu.style.color = "rgb(255, 249, 227)";
+        menu.style.color = "rgb(247, 246, 243)";
     });
 
 
@@ -57,7 +57,7 @@ function dropdownMenu() {
                     listItem.style.color = "rgb(28,28,28)";
                     listItem.style.fontSize = "1.25vw";
                     listItem.style.fontWeight = "bold";
-                    listItem.style.backgroundColor = "rgb(255, 249, 227)";
+                    listItem.style.backgroundColor = "rgb(247, 246, 243)";
                     listItem.style.boxShadow = "0px 5px rgba(255, 249, 227, 0.75)";
                     listItem.style.padding = "10px";
                     listItem.style.cursor = "pointer";
@@ -68,7 +68,7 @@ function dropdownMenu() {
                          listItem.style.boxShadow = "0px 5px rgba(194,41,12, 0.75)";
                     });
                     listItem.addEventListener("mouseleave", () => {
-                        listItem.style.backgroundColor = "rgb(255, 249, 227)";
+                        listItem.style.backgroundColor = "rgb(247, 246, 243);";
                         listItem.style.boxShadow = "0px 5px rgba(255, 249, 227, 0.75)";
                     });
 
@@ -119,9 +119,9 @@ function dropdownMenu() {
                             }
                         }else if(menuItems[i] == "ABOUT") {
                             if(window.location.href.indexOf("src/pages") > -1) {
-                                window.location.href = "about.html";
+                                window.location.href = "aboutus.html";
                             }else{
-                                window.location.href = "src/pages/about.html";
+                                window.location.href = "src/pages/aboutus.html";
                             }
                         }else if(menuItems[i] == "HELP") {
                             if(window.location.href.indexOf("src/pages") > -1) {
@@ -165,7 +165,7 @@ let title = document.querySelector("h1");
 
     title.addEventListener("mouseleave", () => {
         title.style.cursor = "default";
-        title.style.color = "rgb(255, 249, 227)";
+        title.style.color = "rgb(247, 246, 243)";
 
 
     });
@@ -192,7 +192,7 @@ let help = document.getElementById("help_button");
 
 
     help.addEventListener("mouseleave", () => {
-        help.style.color = "rgb(255, 249, 227)";
+        help.style.color = "rgb(247, 246, 243)";
     });
 
 
@@ -218,7 +218,7 @@ let cart = document.getElementById("shop_cart");
 
 
     cart.addEventListener("mouseleave", () => {
-        cart.style.color = "rgb(255, 249, 227)";
+        cart.style.color = "rgb(247, 246, 243)";
     });
 
 
@@ -250,7 +250,7 @@ function dropCart(){
         cartPage.style.position = "absolute";
         cartPage.style.width = "20vw";
         cartPage.style.height = "40vh";
-        cartPage.style.backgroundColor = "rgb(255, 249, 227)";
+        cartPage.style.backgroundColor = "rgb(247, 246, 243)";
         cartDrop.appendChild(cartPage);
 
 
