@@ -1,4 +1,3 @@
-/* Add spacing below fixed header */
 .about-container {
     margin-top: 140px;
     padding: 20px 40px;
@@ -6,11 +5,11 @@
     margin-left: auto;
     margin-right: auto;
 
-    /* fade-in animation like Men's page */
+    
     animation: fadeIn 0.8s ease;
 }
 
-/* Headings */
+
 .about-container h2 {
     font-size: 32px;
     margin-bottom: 12px;
@@ -22,12 +21,12 @@
     margin: 0;
 }
 
-/* Section spacing */
+
 .section {
     margin-bottom: 50px;
 }
 
-/* Value rows */
+
 .value-item {
     display: flex;
     align-items: flex-start;
@@ -40,7 +39,7 @@
     color: rgb(28, 28, 28);
 }
 
-/* Paragraph text */
+
 .about-container p {
     font-size: 18px;
     line-height: 1.6;
@@ -62,7 +61,6 @@
 }
 
 
-/* --- animations (same as men's page) --- */
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(25px); }
