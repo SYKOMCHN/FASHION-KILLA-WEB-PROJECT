@@ -157,8 +157,7 @@ def remove_from_cart(product_id):
 def cart_contents():
     cart = session.get("cart", {})
     if not cart:
-        return '<div style="padding:12px;">Your cart is empty.</div>'
-
+        return '<div style="text-align: center; padding: 40px 12px; color: rgb(120, 120, 120); font-size: 1.1rem; font-weight: 600; font-style: italic; border-radius: 12px; background-color: rgba(255, 249, 227, 0.1);  /* subtle highlight */ margin: 12px;">Your cart is empty.</div>'
     db = get_db()
     cur = db.cursor()
     ids = [int(k) for k in cart.keys()]
@@ -195,6 +194,43 @@ def cart_contents():
     return items_html
 
 
+# render checkout page showing session cart
+@app.route("/src/pages/checkout.html")
+def checkout_page():
+    cart = session.get("cart", {}) or {}
+    items = []
+    total = 0.0
+
+    if cart:
+        ids = [int(k) for k in cart.keys()]
+        db = get_db()
+        cur = db.cursor()
+        placeholders = ",".join("?" * len(ids))
+        cur.execute(f"SELECT id, name, price, image FROM products WHERE id IN ({placeholders})", ids)
+        rows = cur.fetchall()
+        for r in rows:
+            p = dict(r)
+            qty = cart.get(str(p["id"]), 1)
+            img = p.get("image") or ""
+            img_url = ("../../" + img) if (img and not (img.startswith("/") or img.startswith(".."))) else (img or "../../assets/extras/yessir.png")
+            items.append({
+                "id": p["id"],
+                "name": p["name"],
+                "price": p["price"],
+                "qty": qty,
+                "img_url": img_url
+            })
+            total += p["price"] * qty
+
+    purchased = request.args.get("purchased") == "1"
+    return render_template("src/pages/checkout.html", items=items, total=total, purchased=purchased)
+
+
+# clears cart and redirects back with a success flag
+@app.route("/purchase", methods=["POST"])
+def purchase():
+    session.pop("cart", None)
+    return redirect(url_for("checkout_page") + "?purchased=1")
 
 
 

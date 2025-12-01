@@ -254,7 +254,7 @@ function dropCart(){
         cartDrop.appendChild(cartPage);
 
 
-        //CART CONTENT HERE -
+        //CART CONTENT
         
         // helper that fetches and renders the cart contents
         function refreshCart() {
@@ -268,7 +268,7 @@ function dropCart(){
                         const id = this.dataset.id;
                         fetch("/remove_from_cart/" + id, { method: "POST" })
                             .then(() => {
-                                // re-render after removal
+                                // render again after removal
                                 refreshCart();
                             });
                     };
