@@ -3,16 +3,19 @@ let womenPage = document.getElementById("main_women");
 let youthPage = document.getElementById("main_youth");
 let dealsPage = document.getElementById("main_deals");
 let stylePage = document.getElementById("main_style");
+let endPage = document.getElementById("main-end");
 let menSelect = document.getElementById("men_select");
 let styleSelect = document.getElementById("styles_select");
 let womenSelect = document.getElementById("women_select");
 let youthSelect = document.getElementById("youth_select");
 let dealsSelect = document.getElementById("deals_select");
+let endSelect = document.getElementById("end_select");
 let menTitle = document.createElement("div");
 let womenTitle = document.createElement("div");
 let youthTitle = document.createElement("div");
 let dealsTitle = document.createElement("div");
 let styleTitle = document.createElement("div");
+let endTitle = document.createElement("div");
 
 //[men js content]---------------------------------------------------------------------------------------]
 
@@ -286,3 +289,23 @@ stylePage.addEventListener("click", () => {
             window.location.href = "src/pages/collection.html";
         }
     });
+
+ 
+//[styles js content]---------------------------------------------------]
+endTitle.textContent = "THANKS FOR VISITING!";
+    endTitle.style.position = "absolute";
+    endTitle.style.top = "50%";
+    endTitle.style.left = "50%";
+    endTitle.style.transform = "translate(-50%, -50%)";
+    endTitle.style.fontFamily = "sans-serif";
+    endTitle.style.fontWeight = "bold";
+    endTitle.style.fontSize = "8rem";  
+    endTitle.style.color = "rgb(247, 246, 243)";
+    endTitle.style.filter = "drop-shadow(0 0 1px rgb(255, 249, 227))";
+    endTitle.style.zIndex = "10";
+
+endSelect.appendChild(endTitle);
+
+
+
+
