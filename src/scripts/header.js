@@ -16,7 +16,7 @@ let menu = document.getElementById("menu_bar");
 
 
     menu.addEventListener("mouseleave", () => {
-        menu.style.color = "rgb(255, 249, 227)";
+        menu.style.color = "rgb(247, 246, 243)";
     });
 
 
@@ -57,7 +57,7 @@ function dropdownMenu() {
                     listItem.style.color = "rgb(28,28,28)";
                     listItem.style.fontSize = "1.25vw";
                     listItem.style.fontWeight = "bold";
-                    listItem.style.backgroundColor = "rgb(255, 249, 227)";
+                    listItem.style.backgroundColor = "rgb(247, 246, 243)";
                     listItem.style.boxShadow = "0px 5px rgba(255, 249, 227, 0.75)";
                     listItem.style.padding = "10px";
                     listItem.style.cursor = "pointer";
@@ -68,7 +68,7 @@ function dropdownMenu() {
                          listItem.style.boxShadow = "0px 5px rgba(194,41,12, 0.75)";
                     });
                     listItem.addEventListener("mouseleave", () => {
-                        listItem.style.backgroundColor = "rgb(255, 249, 227)";
+                        listItem.style.backgroundColor = "rgb(247, 246, 243);";
                         listItem.style.boxShadow = "0px 5px rgba(255, 249, 227, 0.75)";
                     });
 
@@ -119,9 +119,9 @@ function dropdownMenu() {
                             }
                         }else if(menuItems[i] == "ABOUT") {
                             if(window.location.href.indexOf("src/pages") > -1) {
-                                window.location.href = "about.html";
+                                window.location.href = "aboutus.html";
                             }else{
-                                window.location.href = "src/pages/about.html";
+                                window.location.href = "src/pages/aboutus.html";
                             }
                         }else if(menuItems[i] == "HELP") {
                             if(window.location.href.indexOf("src/pages") > -1) {
@@ -165,7 +165,7 @@ let title = document.querySelector("h1");
 
     title.addEventListener("mouseleave", () => {
         title.style.cursor = "default";
-        title.style.color = "rgb(255, 249, 227)";
+        title.style.color = "rgb(247, 246, 243)";
 
 
     });
@@ -192,7 +192,7 @@ let help = document.getElementById("help_button");
 
 
     help.addEventListener("mouseleave", () => {
-        help.style.color = "rgb(255, 249, 227)";
+        help.style.color = "rgb(247, 246, 243)";
     });
 
 
@@ -218,7 +218,7 @@ let cart = document.getElementById("shop_cart");
 
 
     cart.addEventListener("mouseleave", () => {
-        cart.style.color = "rgb(255, 249, 227)";
+        cart.style.color = "rgb(247, 246, 243)";
     });
 
 
@@ -250,11 +250,51 @@ function dropCart(){
         cartPage.style.position = "absolute";
         cartPage.style.width = "20vw";
         cartPage.style.height = "40vh";
-        cartPage.style.backgroundColor = "rgb(255, 249, 227)";
+        cartPage.style.backgroundColor = "rgb(247, 246, 243)";
         cartDrop.appendChild(cartPage);
 
 
-        //CART CONTENT HERE -
+        //CART CONTENT
+        
+        // helper that fetches and renders the cart contents
+        function refreshCart() {
+            fetch("/cart_contents").then(r => r.text()).then(html => {
+                cartPage.innerHTML = html;
+
+                // attach remove handlers 
+                cartPage.querySelectorAll(".cart-remove").forEach(btn => {
+                    // use onclick to overwrite any existing listener
+                    btn.onclick = function (e) {
+                        const id = this.dataset.id;
+                        fetch("/remove_from_cart/" + id, { method: "POST" })
+                            .then(() => {
+                                // render again after removal
+                                refreshCart();
+                            });
+                    };
+                });
+
+                // attach checkout button
+                const checkout = cartPage.querySelector("#checkout_btn");
+                if (checkout) {
+                    checkout.onclick = () => {
+                        if (window.location.href.indexOf("src/pages") > -1) {
+                            window.location.href = "checkout.html";
+                        } else {
+                            window.location.href = "src/pages/checkout.html";
+                        }
+                    };
+                }
+            });
+        }
+
+        // make refreshCart callable from other scripts
+        window.refreshCart = refreshCart;
+
+        // initial render
+        refreshCart();
+
+
     }
     else {
         console.log("cart closed");
@@ -265,5 +305,36 @@ function dropCart(){
 
 }
 
+// search bar functionality
+(function () {
+    const searchInput = document.querySelector(".search_input");
+
+    // the magnifying glass inside the search bar
+    const searchIcon = document.querySelector(".search_bar .fa-magnifying-glass") || document.querySelector(".search_bar i.fa-magnifying-glass");
+
+    function goSearch() {
+        if (!searchInput) return;
+        const q = (searchInput.value || "").trim();
+        // Flask renders the results
+        window.location.href = "/search?q=" + encodeURIComponent(q);
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                goSearch();
+            }
+        });
+    }
+
+    if (searchIcon) {
+        searchIcon.style.cursor = "pointer";
+        searchIcon.addEventListener("click", (e) => {
+            e.preventDefault();
+            goSearch();
+        });
+    }
+})();
 
 

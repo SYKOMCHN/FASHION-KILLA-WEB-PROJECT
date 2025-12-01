@@ -8,6 +8,7 @@
         
         <link rel="stylesheet" href="../styles/styles.css">
         <link rel = "stylesheet" href="../styles/bigmans.css">
+        <link rel="stylesheet" href="/src/styles/popup.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> -->
 
@@ -19,18 +20,18 @@
                 <div id = "nav">
                     <div class = "left_header">
                         <div class = "menu">
-                            <i class="fa-solid fa-bars" id = "menu_bar" style = "color: rgb(255, 249, 227); font-size:xx-large;"></i>
+                            <i class="fa-solid fa-bars" id = "menu_bar" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
                         </div>   
-                        <h1 style = "color: rgb(255, 249, 227); position: flex;">GIODRIPPS</h1>
+                        <h1 style = "color: rgb(247, 246, 243); position: flex;">GIODRIPPS</h1>
                     </div>
 
                     <div class = "right_header">
-                        <div class = search_bar style = "background-color: rgb(255, 249, 227); border-radius: 15px; padding: 5px;">
+                        <div class = search_bar style = "background-color: rgb(247, 246, 243); border-radius: 15px; padding: 5px;">
                             <i class="fa-solid fa-magnifying-glass" style = "color: rgb(28,28,28); font-size:medium;"></i>
-                            <input type = text placeholder = "Search..." class = "search_input" style = "border: none; background-color: transparent; font-size:large;">
+                            <input type = text placeholder = "Search..." class = "search_input" style = "border: none; background-color: rgb(247, 246, 243); font-size:large;">
                         </div>
-                        <i class="fa-regular fa-circle-question" id = "help_button" style = "color: rgb(255, 249, 227); font-size:xx-large;"></i>
-                        <i class="fa-solid fa-cart-shopping" id = "shop_cart" style = "color: rgb(255, 249, 227); font-size:xx-large;"></i>
+                        <i class="fa-regular fa-circle-question" id = "help_button" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
+                        <i class="fa-solid fa-cart-shopping" id = "shop_cart" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
                     </div>
                 </div>
 
@@ -42,46 +43,35 @@
                 <h2 class="section-title">Men's Collection</h2>
 
                 <div class="clothing-grid">
+                    {# If no products we can show a placeholder card#}
+                    {% if products %}
+                        {% for p in products %}
+                            <div class="item-card" data-id="{{ p.id }}">
+                                <div class="item-img">
+                                    <img src="{{ p.img_url }}" alt="{{ p.name }}">
+                                </div>
+                                <p class="item-name">{{ p.name }}</p>
+                                <p class="item-price">${{ '%.2f'|format(p.price) }}</p>
 
-                <!-- <div class="item-card">
-                    <div class="item-img">
-                        <img src="../../assets/male/cat-sweater.jpg" alt="Clothing Item">
-                    </div>
-                    <p class="item-name">Knitted Sweater</p>
-                    <p class="item-price">$49.99</p>
-                </div> -->
+                                <!-- hidden description for popup JS to read -->
+                                <div class="item-desc" style="display:none;">{{ p.description or '' }}</div>
 
-                <div class="item-card" onclick="openModal(this)">
-                    <div class="item-img">
-                        <img src="../../assets/male/cat-sweater.jpg" alt="Knitted Sweater">
-                    </div>
-                        <p class="item-name">Knitted Sweater</p>
-                        <p class="item-price">$49.99</p>
-                </div>
+                                <!-- existing add-to-cart button left in place (card-level) -->
+                                <button class="add-to-cart" data-id="{{ p.id }}" style="margin-top:8px; padding:8px 10px; border-radius:8px; border:none; background:rgb(28,28,28); color:#fff; cursor:pointer;">
+                                    <i class="fa-solid fa-cart-shopping"></i> Add to cart
+                                </button>
+                            </div>
 
-
-                <div class="item-card">
-                    <div class="item-img">
-                        <img src="../../assets/extras/yessir.png" alt="Clothing Item">
-                    </div>
-                        <p class="item-name">Denim Jacket</p>
-                        <p class="item-price">$89.99</p>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-img">
-                        <img src="../../assets/extras/yessir.png" alt="Clothing Item">
-                    </div>
-                        <p class="item-name">Oversized Tee</p>
-                        <p class="item-price">$24.99</p>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-img">
-                        <img src="../../assets/extras/yessir.png" alt="Clothing Item">
-                    </div>
-                        <p class="item-name">Oversized Tee</p>
-                        <p class="item-price">$24.99</p>
+                        {% endfor %}
+                    {% else %}
+                        <div class="item-card">
+                            <div class="item-img">
+                                <img src="../../assets/extras/yessir.png" alt="Placeholder">
+                            </div>
+                            <p class="item-name">No items! stock is cooked!!!!!!</p>
+                            <p class="item-price">$0.00</p>
+                        </div>
+                    {% endif %}
                 </div>
                     
 
@@ -95,5 +85,6 @@
     </body>    
   
     <script src = "../scripts/header.js"></script>
+    <script src="/src/scripts/popup.js"></script>
 
 </html>

@@ -1,55 +1,108 @@
-<!DOCTYPE html>
-<html lang = "en-US">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>[GIODRIPPS]: CHECKOUT</title>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>[GIODRIPPS]: CHECKOUT</title>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="../styles/styles.css">
-    </head>
-        
-    <body>
-        <div class = page-cont>
-           <header id = "header">
-                <div id = "nav">
-                    <div class = "left_header">
-                        <div class = "menu">
-                            <i class="fa-solid fa-bars" id = "menu_bar" style = "color: rgb(255, 249, 227); font-size:xx-large;"></i>
-                        </div>   
-                        <h1 style = "color: rgb(255, 249, 227); position: flex;">GIODRIPPS</h1>
-                    </div>
-
-                    <div class = "right_header">
-                        <div class = search_bar style = "background-color: rgb(255, 249, 227); border-radius: 15px; padding: 5px;">
-                            <i class="fa-solid fa-magnifying-glass" style = "color: rgb(28,28,28); font-size:medium;"></i>
-                            <input type = text placeholder = "Search..." class = "search_input" style = "border: none; background-color: transparent; font-size:large;">
-                        </div>
-                        <i class="fa-regular fa-circle-question" id = "help_button" style = "color: rgb(255, 249, 227); font-size:xx-large;"></i>
-                        <i class="fa-solid fa-cart-shopping" id = "shop_cart" style = "color: rgb(255, 249, 227); font-size:xx-large;"></i>
-                    </div>
-                </div>
-
-                <!-- Dropdown Menu Content Located-->
-                <!-- Shopping Cart Content Located-->
-            </header>
-            
-            <main>
-
-                <div class = main_content>
-                    
-                </div>
-
-            </main>
-            <div class = "head-contents"></div>
-            <div class = "background_design">
-            
-
-
-            
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="../styles/checkout.css">
+</head>
+<body>
+  <div class="page-cont">
+    <!-- header kept exactly as before -->
+    <header id="header">
+      <div id="nav">
+        <div class="left_header">
+          <div class="menu">
+            <i class="fa-solid fa-bars" id="menu_bar" style="color: rgb(255, 249, 227); font-size:xx-large;"></i>
+          </div>
+          <h1 style="color: rgb(255, 249, 227); position: flex;">GIODRIPPS</h1>
         </div>
-    </body>    
-  
-    <script src = "../scripts/header.js"></script>
+        <div class="right_header">
+          <div class="search_bar" style="background-color: rgb(255, 249, 227); border-radius: 15px; padding: 5px;">
+            <i class="fa-solid fa-magnifying-glass" style="color: rgb(28,28,28); font-size:medium;"></i>
+            <input type="text" placeholder="Search..." class="search_input" style="border: none; background-color: transparent; font-size:large;">
+          </div>
+          <i class="fa-regular fa-circle-question" id="help_button" style="color: rgb(255, 249, 227); font-size:xx-large;"></i>
+          <i class="fa-solid fa-cart-shopping" id="shop_cart" style="color: rgb(255, 249, 227); font-size:xx-large;"></i>
+        </div>
+      </div>
+    </header>
 
+    <main class="checkout-main">
+      <div class="checkout-wrap">
+        <section class="cart-list">
+          <h2>Your cart</h2>
+
+          {% if purchased %}
+            <div class="purchased">Purchase Complete. Thank you!</div>
+          {% endif %}
+
+          {% if items and items|length > 0 %}
+            {% for it in items %}
+              <div class="cart-item" data-id="{{ it.id }}">
+                <img src="{{ it.img_url }}" alt="{{ it.name }}" onerror="this.onerror=null;this.src='../../assets/extras/yessir.png'">
+                <div class="meta">
+                  <div class="name">{{ it.name }}</div>
+                  <div class="price">${{ '%.2f'|format(it.price) }} × {{ it.qty }} = <strong>${{ '%.2f'|format(it.price * it.qty) }}</strong></div>
+                </div>
+                <button class="remove-btn" data-id="{{ it.id }}">Remove</button>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="empty-note">Your cart is empty!</div>
+          {% endif %}
+        </section>
+
+        <aside class="summary">
+          <h3>Order summary</h3>
+
+          <div class="payment">
+            <div>Payment Method</div>
+            <div class="pm">Gio Drips account: <strong>${{ '%.2f'|format(total) }}</strong></div>
+          </div>
+
+          <div class="totals">
+            <div class="row"><span>Subtotal</span><span>${{ '%.2f'|format(total) }}</span></div>
+            <div class="row"><span>Shipping</span><span>Free</span></div>
+            <div class="row total"><span>Total</span><span>${{ '%.2f'|format(total) }}</span></div>
+          </div>
+
+          <form id="purchaseForm" method="POST" action="/purchase">
+            <label class="chk">
+              <input id="fakePayCheck" type="checkbox">
+              <span>I understand I'm not actually paying for these items</span>
+            </label>
+            <button id="purchaseBtn" type="submit" class="purchase-btn" disabled>Purchase</button>
+          </form>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="../scripts/header.js"></script>
+  <script>
+    // compact client behavior: remove items, enable purchase, prevent double submits
+    (function(){
+      const checkbox = document.getElementById('fakePayCheck');
+      const purchaseBtn = document.getElementById('purchaseBtn');
+      checkbox?.addEventListener('change', ()=> purchaseBtn.disabled = !checkbox.checked);
+
+      document.querySelectorAll('.remove-btn').forEach(btn=>{
+        btn.addEventListener('click', function(){
+          fetch('/remove_from_cart/' + this.dataset.id, { method: 'POST' })
+            .then(()=> location.reload());
+        });
+      });
+
+      const form = document.getElementById('purchaseForm');
+      form?.addEventListener('submit', function(e){
+        if (purchaseBtn.disabled) { e.preventDefault(); return; }
+        purchaseBtn.disabled = true; purchaseBtn.textContent = 'Processing...';
+      });
+    })();
+  </script>
+</body>
 </html>

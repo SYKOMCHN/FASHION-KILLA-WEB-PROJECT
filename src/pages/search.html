@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>[GIODRIPPS]: SEARCH</title>
+
+  <link rel="stylesheet" href="/src/styles/styles.css">
+  <link rel="stylesheet" href="/src/styles/bigmans.css">
+  <link rel="stylesheet" href="/src/styles/popup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="page-cont">
+<header id = "header">
+                <div id = "nav">
+                    <div class = "left_header">
+                        <div class = "menu">
+                            <i class="fa-solid fa-bars" id = "menu_bar" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
+                        </div>   
+                        <h1 style = "color: rgb(247, 246, 243); position: flex;">GIODRIPPS</h1>
+                    </div>
+
+                    <div class = "right_header">
+                        <div class = search_bar style = "background-color: rgb(247, 246, 243); border-radius: 15px; padding: 5px;">
+                            <i class="fa-solid fa-magnifying-glass" style = "color: rgb(28,28,28); font-size:medium;"></i>
+                            <input type = text placeholder = "Search..." class = "search_input" style = "border: none; background-color: rgb(247, 246, 243); font-size:large;">
+                        </div>
+                        <i class="fa-regular fa-circle-question" id = "help_button" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
+                        <i class="fa-solid fa-cart-shopping" id = "shop_cart" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
+                    </div>
+                </div>
+
+                <!-- Dropdown Menu Content Located-->
+                <!-- Shopping Cart Content Located-->
+            </header>
+
+    <div class="body_content" id="body_content">
+
+      <h2 class="section-title">Search Results{% if query %} for “{{ query|e }}”{% endif %}</h2> 
+
+      <div class="clothing-grid">
+        {% if products and products|length > 0 %}
+          {% for p in products %}
+            <div class="item-card" data-id="{{ p.id }}">
+                <div class="item-img">
+                    <img src="{{ p.img_url }}" alt="{{ p.name }}">
+                </div>
+                <p class="item-name">{{ p.name }}</p>
+                <p class="item-price">${{ '%.2f'|format(p.price) }}</p>
+
+                <!-- hidden description for popup JS to read -->
+                <div class="item-desc" style="display:none;">{{ p.description or '' }}</div>
+
+                <!-- existing add-to-cart button left in place (card-level) -->
+                <button class="add-to-cart" data-id="{{ p.id }}" style="margin-top:8px; padding:8px 10px; border-radius:8px; border:none; background:rgb(28,28,28); color:#fff; cursor:pointer;">
+                    <i class="fa-solid fa-cart-shopping"></i> Add to cart
+                </button>
+            </div>
+
+          {% endfor %}
+        {% else %}
+          <div style="width:100%; text-align:center; padding:60px 20px;">
+            <p class="no-results">
+              No results found.
+            </p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="background_design"></div>
+  </div>
+
+  
+  <script src="/src/scripts/header.js"></script>
+  <script src="/src/scripts/popup.js"></script>
+
+</body>
+</html>
