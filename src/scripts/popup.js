@@ -79,3 +79,32 @@ document.querySelectorAll(".add-to-cart").forEach(btn => {
       });
   });
 });
+
+
+// handler for any add-to-cart button
+document.body.addEventListener("click", function (e) {
+  const btn = e.target.closest(".add-to-cart");
+  if (!btn) return;
+
+  // prevent duplicate clicks
+  e.preventDefault();
+  const id = btn.dataset.id;
+  if (!id) return;
+
+  const previous = btn.innerHTML;
+  btn.innerHTML = "Added ✓";
+
+  fetch("/add_to_cart/" + id, { method: "POST" })
+    .then(() => {
+      // update open dropdown/cart
+      if (window.refreshCart) window.refreshCart();
+      setTimeout(() => {
+        // restore button
+        btn.innerHTML = previous;
+      }, 900);
+    })
+    .catch(() => {
+      // on error, restore button
+      btn.innerHTML = previous;
+    });
+});

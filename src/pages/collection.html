@@ -1,56 +1,80 @@
 <!DOCTYPE html>
-<html lang = "en-US">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>[GIODRIPPS]: FASHION COLLECTION</title>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>[GIODRIPPS]: COLLECTION</title>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="../styles/styles.css">
-    </head>
-        
-    <body>
-        <div class = page-cont>
-        <header id = "header">
-                <div id = "nav">
-                    <div class = "left_header">
-                        <div class = "menu">
-                            <i class="fa-solid fa-bars" id = "menu_bar" style = "color: rgb(255, 249, 227); font-size:xx-large;"></i>
-                        </div>   
-                        <h1 style = "color: rgb(255, 249, 227); position: flex;">GIODRIPPS</h1>
-                    </div>
-
-                    <div class = "right_header">
-                        <div class = search_bar style = "background-color: rgb(255, 249, 227); border-radius: 15px; padding: 5px;">
-                            <i class="fa-solid fa-magnifying-glass" style = "color: rgb(28,28,28); font-size:medium;"></i>
-                            <input type = text placeholder = "Search..." class = "search_input" style = "border: none; background-color: transparent; font-size:large;">
-                        </div>
-                        <i class="fa-regular fa-circle-question" id = "help_button" style = "color: rgb(255, 249, 227); font-size:xx-large;"></i>
-                        <i class="fa-solid fa-cart-shopping" id = "shop_cart" style = "color: rgb(255, 249, 227); font-size:xx-large;"></i>
-                    </div>
-                </div>
-
-                <!-- Dropdown Menu Content Located-->
-                <!-- Shopping Cart Content Located-->
-            </header>
-            
-            <main>
-
-                <div class = main_content>
-                    
-                </div>
-
-            </main>
-            <div class = "head-contents"></div>
-            <div class = "background_design">
-            
-
-
-            
+  <link rel="stylesheet" href="/src/styles/styles.css">
+  <link rel="stylesheet" href="/src/styles/collection.css">
+  <link rel="stylesheet" href="/src/styles/popup.css">
+  <link rel="stylesheet" href="/src/styles/bigmans.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="page-cont">
+    <header id="header">
+      <div id="nav">
+        <div class="left_header">
+          <div class="menu"><i class="fa-solid fa-bars" id="menu_bar" style="color: rgb(255, 249, 227); font-size:xx-large;"></i></div>
+          <h1 style="color: rgb(255, 249, 227); position: flex;">GIODRIPPS</h1>
         </div>
-    </body>    
-  
-    <script src = "../scripts/header.js"></script>
+        <div class="right_header">
+          <div class="search_bar" style="background-color: rgb(255, 249, 227); border-radius: 15px; padding: 5px;">
+            <i class="fa-solid fa-magnifying-glass" style="color: rgb(28,28,28); font-size:medium;"></i>
+            <input type="text" placeholder="Search..." class="search_input" style="border: none; background-color: transparent; font-size:large;">
+          </div>
+          <i class="fa-regular fa-circle-question" id="help_button" style="color: rgb(255, 249, 227); font-size:xx-large;"></i>
+          <i class="fa-solid fa-cart-shopping" id="shop_cart" style="color: rgb(255, 249, 227); font-size:xx-large;"></i>
+        </div>
+      </div>
+    </header>
 
+    <h2 class="section-title">Style Collection</h2>
+    <main>
+      <div class="fits-grid">
+        {% for f in fits %}
+          <div class="fit-card" data-fit-id="{{ f.id }}" aria-label="Fit {{ f.id }}">
+            <img src="{{ '/' + f.image if not f.image.startswith('/') else f.image }}" alt="{{ f.title }}">
+          </div>
+        {% endfor %}
+      </div>
+    </main>
 
+    <div class="background_design"></div>
+  </div>
+
+  <!-- scripts -->
+  <script src="/src/scripts/header.js"></script>
+  <script src="/src/scripts/popup.js"></script>
+  <script src="/src/scripts/cart.js"></script>
+  <script>
+    // collection.js - fetch fit cards and show in a popup
+    document.addEventListener("click", function (e) {
+    const fit = e.target.closest(".fit-card");
+    if (!fit) return;
+    const id = fit.dataset.fitId;
+    fetch("/fit_contents/" + id)
+        .then(r => r.text())
+        .then(html => {
+        const overlay = document.createElement("div");
+        overlay.className = "popup-overlay";
+        overlay.innerHTML = `
+            <div class="popup" role="dialog" aria-modal="true" style="max-width:1100px;">
+            <button class="popup-close">&times;</button>
+            <div style="width:100%; padding:8px;">
+                <h3 style="margin:6px 0 14px 0; text-align:center;">Fit Items</h3>
+                <div class="fit-items-container">${html}</div>
+            </div>
+            </div>
+        `;
+        overlay.querySelector(".popup-close").addEventListener("click", () => overlay.remove());
+        overlay.addEventListener("click", (ev) => { if (ev.target === overlay) overlay.remove(); });
+        document.body.appendChild(overlay);
+        })
+        .catch(err => console.error(err));
+    });
+
+  </script>
+</body>
 </html>

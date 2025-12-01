@@ -233,6 +233,63 @@ def purchase():
     return redirect(url_for("checkout_page") + "?purchased=1")
 
 
+# collection stuff here
+FITS = [
+    {"id": 1, "title": "Fall Streetwear", "image": "assets/images/black&Whitephoto.jpeg", "product_ids": [1, 2, 3]},
+    {"id": 2, "title": "Minimal Core",   "image": "assets/extras/yessir.png", "product_ids": [2, 4]},
+    {"id": 3, "title": "Casual Weekend", "image": "assets/extras/yessir.png", "product_ids": [1, 5, 3, 4]},
+]
+
+@app.route("/src/pages/collection.html")
+def collection_page():
+    # render template that lists fits
+    return render_template("src/pages/collection.html", fits=FITS)
+
+@app.route("/collection")
+def collection_short():
+    return render_template("src/pages/collection.html", fits=FITS)
+
+
+@app.route("/fit_contents/<int:fit_id>")
+def fit_contents(fit_id):
+    """Return an HTML fragment with item-card markup for the products in the fit."""
+    fit = next((f for f in FITS if f["id"] == fit_id), None)
+    if not fit:
+        return "<div style='padding:12px;'>Fit not found.</div>"
+
+    ids = fit.get("product_ids", [])
+    if not ids:
+        return "<div style='padding:12px;'>No items in this fit yet.</div>"
+
+    db = get_db()
+    cur = db.cursor()
+    placeholders = ",".join("?" * len(ids))
+    cur.execute(f"SELECT * FROM products WHERE id IN ({placeholders})", ids)
+    rows = cur.fetchall()
+
+    # build cards same as the other pages
+    cards_html = '<div class="fit-cards-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">'
+    for r in rows:
+        p = dict(r)
+        img = p.get("image") or ""
+        img_url = ("../../" + img) if (img and not (img.startswith("/") or img.startswith(".."))) else (img or "../../assets/extras/yessir.png")
+        desc = (p.get("description") or "").replace('"', '&quot;')
+        cards_html += f'''
+            <div class="item-card" data-id="{p["id"]}">
+              <div class="item-img"><img src="{img_url}" alt="{p["name"]}"></div>
+              <p class="item-name">{p["name"]}</p>
+              <p class="item-price">${p["price"]:.2f}</p>
+              <div class="item-desc" style="display:none;">{desc}</div>
+              <button class="add-to-cart" data-id="{p["id"]}" style="margin-top:8px;padding:8px 10px;border-radius:8px;border:none;background:rgb(28,28,28);color:#fff;cursor:pointer;">
+                <i class="fa-solid fa-cart-shopping"></i> Add to cart
+              </button>
+            </div>
+        '''
+    cards_html += "</div>"
+
+    return cards_html
+
+
 
 if __name__ == "__main__":
     
