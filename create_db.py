@@ -36,7 +36,7 @@ INSERT INTO products (name, price, category, image, description, stock) VALUES
 ('Light Blue Jeans', 54.99, 'mens', 'assets/images/mens/lightbluejeans.webp', 'Light wash denim with vintage-inspired fading and comfortable fit.', 200),
 ('Light Gray Hoodie', 49.99, 'mens', 'assets/images/mens/lightgrayhoodie.webp', 'Classic pullover hoodie with kangaroo pocket and soft brushed interior.', 200),
 ('Light Green Shirt', 24.99, 'mens', 'assets/images/mens/lightgreenshirt.webp', 'Casual short-sleeve shirt in a fresh light-green hue.', 200),
-('Brown Suede Leather Jacket', 249.99, 'mens', 'assets/images/mens/rickgrimesjacket.jpg', 'Premium suede leather jacket with classic cut — luxurious finish and build.', 200),
+('Brown Suede Leather Jacket', 249.99, 'mens', 'assets/images/mens/rickgrimesjacket.jpg', 'Premium suede leather jacket with classic cut — luxurious finish and build. (The Classic Rick Grimes Jacket)', 200),
 ('White Hoodie', 49.99, 'mens', 'assets/images/mens/whitehoodie.jpg', 'Clean, versatile pullover hoodie with moderate weight and comfy lining.', 200),
 ('White Socks', 6.99, 'mens', 'assets/images/mens/whitesocks.webp', 'Classic white crew socks with breathable cotton blend.', 200),
 ('Beige Long-Sleeve Shirt', 29.99, 'womens', 'assets/images/womens/beigelongsleeveshirt.jpeg', 'Soft beige long-sleeve top with a flattering relaxed fit.', 200),
