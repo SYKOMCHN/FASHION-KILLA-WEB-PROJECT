@@ -1,79 +1,108 @@
 /* stylize index.html */
-
 .main_content{
    /* background-color: brown; */
     justify-items: center;
     text-align: center;
     width: 100vw;
     height:100vh;
-    padding-top: 13vh;
+    padding-top: 12vh;
     margin: 0;
 }
 /*[front page image content]------------------------------------------------*/
-.img_content{   
+.img_content {   
     background-color: rgb(28,28,28);
-    width:100vw;
-    height:80vh;
+    width: 100vw;
+    height: 90vh;
     justify-content: center;
     overflow: hidden;
+    position: relative;
 }
 
 .main_img1 {
-    width: max-content;
-    object-fit: cover;
-}
-/*[men and women link]------------------------------------------------------*/
-.section1{ 
-    position: absolute;
-    display: flex;
-    background-color: rgb(73, 69, 45);
     width: 100vw;
-    height: 100vh;
-    margin: 0;
+    height: 90vh;
+    object-fit: cover;
+    display: block;
+    transform: scale(1);
+}
+
+/*[men and women sections]*/
+.section1 {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.men_select {
+    position: relative;
+    background-color: rgb(247, 246, 243);
+    height: 90vh;
+    width: 50vw;
+    flex-shrink: 0;
+    justify-content: center;
     overflow: hidden;
 }
 
-.men_select{
+.main_men {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.women_select {
     position: relative;
-    background-color: rgb(28,28,28);
-    height:90vh;
+    background-color: rgb(247, 246, 243);
+    height: 90vh;
+    width: 50vw;
+    flex-shrink: 0;
     justify-content: center;
-    
+    overflow: hidden;
 }
 
-.main_men{
+.main_women {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     display: block;
+    transform: none; 
 }
 
-.women_select{
-    position:relative;
-    background-color: rgb(28,28,28);
-    height:90vh;
+.section2,
+.section3,
+.section4 {   
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: rgb(247, 246, 243);
+    width: 100vw;
+    height: 90vh;
+    padding-top:60px;
+    padding-bottom:60px;
     justify-content: center;
+    overflow: hidden;
+    position: relative;
 }
 
-.main_women{
- 
+.section2_cont,
+.section3_cont,
+.section4_cont{
+    position: relative;
+    background-color: rgb(247, 246, 243);
+    height: 90vh;
+    width: 100vw;
+    flex-shrink: 0;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.main_youth,
+.main_style,
+.main_deals{
+    transition: filter 0.3s, transform 0.3s;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     display: block;
-    transform: translate(-120px,-275px);
+    transform: "none"; 
 }
 
-
-    
-/*[youth link]-------------------------------------------------------*/
-.section2{ 
-    background-color: rgb(112, 72, 39);
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-}
-
-.section3{ 
-    background-color: rgb(132, 149, 221);
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-}
 
