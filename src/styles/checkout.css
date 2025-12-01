@@ -1,0 +1,148 @@
+
+.checkout-main {
+    padding: 110px 16px 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.checkout-wrap {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* left side */
+.cart-list {
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.cart-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.meta {
+    flex: 1;
+}
+
+.name {
+    font-weight: 700;
+    color: #1c1c1c;
+}
+
+.price {
+    color: #666;
+    margin-top: 6px;
+}
+
+
+.remove-btn {
+    background: #cc2222;
+    color: rgb(255, 249, 227);
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+    font-weight: 600;
+}
+
+.remove-btn:hover {
+    opacity: 0.8;
+}
+
+/* right summary */
+.summary {
+    width: 340px;
+    background: rgb(28,28,28);
+    color: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.payment {
+    background: #fff;
+    color: #000;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.pm {
+    font-weight: 700;
+}
+
+.totals .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    color: #ddd;
+}
+
+.row.total {
+    font-weight: 800;
+    color: #fff;
+    border-top: 1px dashed rgba(255,255,255,0.06);
+    padding-top: 12px;
+    margin-top: 8px;
+}
+
+.chk {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    margin-top: 8px;
+    font-size: 0.95rem;
+}
+
+.purchase-btn {
+    margin-top: 8px;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #ffdfe0;
+    color: #1c1c1c;
+    font-weight: 700;
+    width: 100%;
+}
+
+.purchase-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.empty-note {
+    text-align: center;
+    padding: 48px 12px;
+    color: #666;
+}
+
+.purchased {
+    background: #eefbe6;
+    color: #145214;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 700;
+}

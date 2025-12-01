@@ -8,6 +8,7 @@
         
         <link rel="stylesheet" href="../styles/styles.css">
         <link rel = "stylesheet" href="../styles/bigmans.css">
+        <link rel="stylesheet" href="/src/styles/popup.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> -->
 
@@ -45,18 +46,22 @@
                     {# If no products we can show a placeholder card#}
                     {% if products %}
                         {% for p in products %}
-                            <div class="item-card">
+                            <div class="item-card" data-id="{{ p.id }}">
                                 <div class="item-img">
                                     <img src="{{ p.img_url }}" alt="{{ p.name }}">
                                 </div>
                                 <p class="item-name">{{ p.name }}</p>
                                 <p class="item-price">${{ '%.2f'|format(p.price) }}</p>
 
-                                <!-- ADD TO CART button -->
+                                <!-- hidden description for popup JS to read -->
+                                <div class="item-desc" style="display:none;">{{ p.description or '' }}</div>
+
+                                <!-- existing add-to-cart button left in place (card-level) -->
                                 <button class="add-to-cart" data-id="{{ p.id }}" style="margin-top:8px; padding:8px 10px; border-radius:8px; border:none; background:rgb(28,28,28); color:#fff; cursor:pointer;">
-                                    <i class="fa-solid fa-cart-plus"></i> Add to cart
+                                    <i class="fa-solid fa-cart-shopping"></i> Add to cart
                                 </button>
                             </div>
+
                         {% endfor %}
                     {% else %}
                         <div class="item-card">
@@ -80,5 +85,6 @@
     </body>    
   
     <script src = "../scripts/header.js"></script>
+    <script src="/src/scripts/popup.js"></script>
 
 </html>

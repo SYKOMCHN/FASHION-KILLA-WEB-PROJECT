@@ -1,12 +1,18 @@
-import os
-import sqlite3
-from flask import Flask, g, render_template, jsonify, request, abort, url_for, session
+from flask import Flask, g, render_template, jsonify, request, abort, url_for, session, redirect, render_template_string
+import sqlite3, os
+
+from datetime import timedelta
 
 app = Flask(__name__, static_folder='.', static_url_path='', template_folder='.')
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "data", "products.db")
 
-# secret key for sessions
+
+# keep session for 30 days
+app.permanent_session_lifetime = timedelta(days=30)
+
+
+# key for sessions
 app.secret_key = os.environ.get("SECRET_KEY", "boopyboopboope")
 
 def get_db():
@@ -50,6 +56,7 @@ def index():
     return render_template("index.html")
 
 
+# mens page
 @app.route("/src/pages/men.html")
 def men_page():
     products = query_products(category="mens")
@@ -61,6 +68,33 @@ def men_page():
 def men_short():
     products = query_products(category="mens")
     return render_template("src/pages/men.html", products=products)
+
+
+# women page
+@app.route("/src/pages/women.html")
+def women_page():
+    products = query_products(category="womens")
+    return render_template("src/pages/women.html", products=products)
+
+@app.route("/women")
+def women_short():
+    products = query_products(category="womens")
+    return render_template("src/pages/women.html", products=products)
+
+
+# youth page
+@app.route("/src/pages/youth.html")
+def youth_page():
+    products = query_products(category="youth")
+    return render_template("src/pages/youth.html", products=products)
+
+@app.route("/youth")
+def youth_short():
+    products = query_products(category="youth")
+    return render_template("src/pages/youth.html", products=products)
+
+
+
 
 # search route
 @app.route("/search")
@@ -92,6 +126,169 @@ def search():
 
     # render the search.html page with the results
     return render_template("src/pages/search.html", products=products, query=q)
+
+
+
+
+
+# add item to cart
+@app.route("/add_to_cart/<int:product_id>", methods=["POST"])
+def add_to_cart(product_id):
+    cart = session.get("cart", {})
+    cart = dict(cart)
+    key = str(product_id)
+    cart[key] = cart.get(key, 0) + 1
+    session["cart"] = cart
+    session.permanent = True
+    return ("", 204)
+
+# remove item from cart (POST)
+@app.route("/remove_from_cart/<int:product_id>", methods=["POST"])
+def remove_from_cart(product_id):
+    cart = session.get("cart", {})
+    key = str(product_id)
+    if key in cart:
+        del cart[key]
+        session["cart"] = cart
+    return ("", 204)
+
+# return HTML fragment for cart dropdown
+@app.route("/cart_contents")
+def cart_contents():
+    cart = session.get("cart", {})
+    if not cart:
+        return '<div style="text-align: center; padding: 40px 12px; color: rgb(120, 120, 120); font-size: 1.1rem; font-weight: 600; font-style: italic; border-radius: 12px; background-color: rgba(255, 249, 227, 0.1);  /* subtle highlight */ margin: 12px;">Your cart is empty.</div>'
+    db = get_db()
+    cur = db.cursor()
+    ids = [int(k) for k in cart.keys()]
+    placeholders = ",".join("?" * len(ids))
+    cur.execute(f"SELECT id, name, price, image FROM products WHERE id IN ({placeholders})", ids)
+    rows = cur.fetchall()
+
+    total = 0.0
+    items_html = ""
+    for r in rows:
+        p = dict(r)
+        qty = cart.get(str(p["id"]), 1)
+        total += p["price"] * qty
+        img = p.get("image") or ""
+        img_url = ("../../" + img) if (img and not (img.startswith("/") or img.startswith(".."))) else (img or "../../assets/extras/yessir.png")
+
+        items_html += f'''
+        <div class="cart-item" data-id="{p["id"]}" style="display:flex;gap:8px;padding:8px;border-bottom:1px solid rgba(0,0,0,0.06);align-items:center;">
+          <img src="{img_url}" alt="{p["name"]}" style="width:50px;height:50px;object-fit:cover;border-radius:6px;">
+          <div style="flex:1;">
+            <div style="font-weight:bold;font-size:0.9rem;">{p["name"]}</div>
+            <div style="font-size:0.85rem;">${p["price"]:.2f} x {qty}</div>
+          </div>
+          <button class="cart-remove" data-id="{p['id']}" style="border:none;background:#c22;color:#fff;padding:6px 8px;border-radius:6px;cursor:pointer;">Remove</button>
+        </div>
+        '''
+
+    items_html += f'''
+      <div style="padding:8px 8px 0 8px;"><strong>Total: ${total:.2f}</strong></div>
+      <div style="padding:10px;">
+        <button id="checkout_btn" style="width:100%;padding:8px;border-radius:8px;border:none;cursor:pointer;background:rgb(28,28,28);color:#fff;">Go to checkout</button>
+      </div>
+    '''
+    return items_html
+
+
+# render checkout page showing session cart
+@app.route("/src/pages/checkout.html")
+def checkout_page():
+    cart = session.get("cart", {}) or {}
+    items = []
+    total = 0.0
+
+    if cart:
+        ids = [int(k) for k in cart.keys()]
+        db = get_db()
+        cur = db.cursor()
+        placeholders = ",".join("?" * len(ids))
+        cur.execute(f"SELECT id, name, price, image FROM products WHERE id IN ({placeholders})", ids)
+        rows = cur.fetchall()
+        for r in rows:
+            p = dict(r)
+            qty = cart.get(str(p["id"]), 1)
+            img = p.get("image") or ""
+            img_url = ("../../" + img) if (img and not (img.startswith("/") or img.startswith(".."))) else (img or "../../assets/extras/yessir.png")
+            items.append({
+                "id": p["id"],
+                "name": p["name"],
+                "price": p["price"],
+                "qty": qty,
+                "img_url": img_url
+            })
+            total += p["price"] * qty
+
+    purchased = request.args.get("purchased") == "1"
+    return render_template("src/pages/checkout.html", items=items, total=total, purchased=purchased)
+
+
+# clears cart and redirects back with a success flag
+@app.route("/purchase", methods=["POST"])
+def purchase():
+    session.pop("cart", None)
+    return redirect(url_for("checkout_page") + "?purchased=1")
+
+
+# collection stuff here
+FITS = [
+    {"id": 1, "title": "Fall Streetwear", "image": "assets/images/black&Whitephoto.jpeg", "product_ids": [1, 2, 3]},
+    {"id": 2, "title": "Minimal Core",   "image": "assets/extras/yessir.png", "product_ids": [2, 4]},
+    {"id": 3, "title": "Casual Weekend", "image": "assets/extras/yessir.png", "product_ids": [1, 5, 3, 4]},
+]
+
+@app.route("/src/pages/collection.html")
+def collection_page():
+    # render template that lists fits
+    return render_template("src/pages/collection.html", fits=FITS)
+
+@app.route("/collection")
+def collection_short():
+    return render_template("src/pages/collection.html", fits=FITS)
+
+
+@app.route("/fit_contents/<int:fit_id>")
+def fit_contents(fit_id):
+    """Return an HTML fragment with item-card markup for the products in the fit."""
+    fit = next((f for f in FITS if f["id"] == fit_id), None)
+    if not fit:
+        return "<div style='padding:12px;'>Fit not found.</div>"
+
+    ids = fit.get("product_ids", [])
+    if not ids:
+        return "<div style='padding:12px;'>No items in this fit yet.</div>"
+
+    db = get_db()
+    cur = db.cursor()
+    placeholders = ",".join("?" * len(ids))
+    cur.execute(f"SELECT * FROM products WHERE id IN ({placeholders})", ids)
+    rows = cur.fetchall()
+
+    # build cards same as the other pages
+    cards_html = '<div class="fit-cards-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">'
+    for r in rows:
+        p = dict(r)
+        img = p.get("image") or ""
+        img_url = ("../../" + img) if (img and not (img.startswith("/") or img.startswith(".."))) else (img or "../../assets/extras/yessir.png")
+        desc = (p.get("description") or "").replace('"', '&quot;')
+        cards_html += f'''
+            <div class="item-card" data-id="{p["id"]}">
+              <div class="item-img"><img src="{img_url}" alt="{p["name"]}"></div>
+              <p class="item-name">{p["name"]}</p>
+              <p class="item-price">${p["price"]:.2f}</p>
+              <div class="item-desc" style="display:none;">{desc}</div>
+              <button class="add-to-cart" data-id="{p["id"]}" style="margin-top:8px;padding:8px 10px;border-radius:8px;border:none;background:rgb(28,28,28);color:#fff;cursor:pointer;">
+                <i class="fa-solid fa-cart-shopping"></i> Add to cart
+              </button>
+            </div>
+        '''
+    cards_html += "</div>"
+
+    return cards_html
+
 
 
 if __name__ == "__main__":

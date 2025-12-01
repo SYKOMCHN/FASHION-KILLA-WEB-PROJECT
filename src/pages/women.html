@@ -3,16 +3,20 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>[GIODRIPPS]: WOMEN'S COLLECTION</title>
+        <title>[GIODRIPPS]:  WOMEN'S COLLECTION</title>
 
+        
         <link rel="stylesheet" href="../styles/styles.css">
-        <link rel="stylesheet" href="../styles/respectwhamen.css">
+        <link rel = "stylesheet" href="../styles/bigmans.css">
+        <link rel="stylesheet" href="/src/styles/popup.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> -->
+
     </head>
         
     <body>
         <div class = page-cont>
-       <header id = "header">
+               <header id = "header">
                 <div id = "nav">
                     <div class = "left_header">
                         <div class = "menu">
@@ -35,60 +39,52 @@
                 <!-- Shopping Cart Content Located-->
             </header>
             
-        <div class = "body_content" id = "body_content">
-            <h2 class="section-title">Women's Collection</h2>
+            <div class = "body_content" id = "body_content">
+                <h2 class="section-title">Women's Collection</h2>
+
                 <div class="clothing-grid">
-                    <!-- <div class="item-card">
-                           <div class="item-img">
-                            <img src="../../assets/male/cat-sweater.jpg" alt="Clothing Item">
+                    {# If no products we can show a placeholder card#}
+                    {% if products %}
+                        {% for p in products %}
+                            <div class="item-card" data-id="{{ p.id }}">
+                                <div class="item-img">
+                                    <img src="{{ p.img_url }}" alt="{{ p.name }}">
+                                </div>
+                                <p class="item-name">{{ p.name }}</p>
+                                <p class="item-price">${{ '%.2f'|format(p.price) }}</p>
+
+                                <!-- hidden description for popup JS to read -->
+                                <div class="item-desc" style="display:none;">{{ p.description or '' }}</div>
+
+                                <!-- existing add-to-cart button left in place (card-level) -->
+                                <button class="add-to-cart" data-id="{{ p.id }}" style="margin-top:8px; padding:8px 10px; border-radius:8px; border:none; background:rgb(28,28,28); color:#fff; cursor:pointer;">
+                                    <i class="fa-solid fa-cart-shopping"></i> Add to cart
+                                </button>
                             </div>
-                            <p class="item-name">Knitted Sweater</p>
-                            <p class="item-price">$49.99</p>
-                        </div> -->
 
-                        <div class="item-card" onclick="openModal(this)">
-                            <div class="item-img">
-                                <img src="../../assets/male/cat-sweater.jpg" alt="Knitted Sweater">
-                            </div>
-                                <p class="item-name">Knitted Sweater</p>
-                                <p class="item-price">$49.99</p>
-                        </div>
-
-
+                        {% endfor %}
+                    {% else %}
                         <div class="item-card">
                             <div class="item-img">
-                                <img src="../../assets/extras/yessir.png" alt="Clothing Item">
+                                <img src="../../assets/extras/yessir.png" alt="Placeholder">
                             </div>
-                                <p class="item-name">Denim Jacket</p>
-                                <p class="item-price">$89.99</p>
+                            <p class="item-name">No items! stock is cooked!!!!!!</p>
+                            <p class="item-price">$0.00</p>
                         </div>
-
-                        <div class="item-card">
-                            <div class="item-img">
-                                <img src="../../assets/extras/yessir.png" alt="Clothing Item">
-                            </div>
-                                <p class="item-name">Oversized Tee</p>
-                                <p class="item-price">$24.99</p>
-                        </div>
-
-                        <div class="item-card">
-                            <div class="item-img">
-                                <img src="../../assets/extras/yessir.png" alt="Clothing Item">
-                            </div>
-                                <p class="item-name">Oversized Tee</p>
-                                <p class="item-price">$24.99</p>
-                        </div>
-                            
-
+                    {% endif %}
                 </div>
+                    
 
-
-                    <div class = "background_design">
-                        
-                    </div>
             </div>
+
+
+                <div class = "background_design">
+                
+                </div>
+        </div>
     </body>    
   
     <script src = "../scripts/header.js"></script>
+    <script src="/src/scripts/popup.js"></script>
 
 </html>
