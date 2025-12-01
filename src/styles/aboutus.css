@@ -1,0 +1,70 @@
+/* Add spacing below fixed header */
+.about-container {
+    margin-top: 140px;
+    padding: 20px 40px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* fade-in animation like Men's page */
+    animation: fadeIn 0.8s ease;
+}
+
+/* Headings */
+.about-container h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: rgb(28, 28, 28);
+}
+
+.about-container h3 {
+    font-size: 22px;
+    margin: 0;
+}
+
+/* Section spacing */
+.section {
+    margin-bottom: 50px;
+}
+
+/* Value rows */
+.value-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.value-item i {
+    font-size: 28px;
+    color: rgb(28, 28, 28);
+}
+
+/* Paragraph text */
+.about-container p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 5px 0 20px 0;
+}
+
+.story-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.story-image-container img {
+    width: 80%;
+    max-width: 700px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+
+/* --- animations (same as men's page) --- */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
