@@ -1,57 +1,97 @@
 <!DOCTYPE html>
-<html lang = "en-US">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>[GIODRIPPS]: ABOUT US</title>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>[GIODRIPPS]: ABOUT US</title>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../styles/styles.css"> 
+    <link rel="stylesheet" href="../styles/aboutus.css">
 
-    </head>
-        
-    <body>
-        <div class = page-cont>
-         <header id = "header">
-                <div id = "nav">
-                    <div class = "left_header">
-                        <div class = "menu">
-                            <i class="fa-solid fa-bars" id = "menu_bar" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
-                        </div>   
-                        <h1 style = "color: rgb(247, 246, 243); position: flex;">GIODRIPPS</h1>
+<body>
+    <div class="page-cont">
+
+        <header id="header">
+            <div id="nav">
+                <div class="left_header">
+                    <div class="menu">
+                        <i class="fa-solid fa-bars" id="menu_bar" style="color: rgb(247, 246, 243); font-size: xx-large;"></i>
                     </div>
+                    <h1 style="color: rgb(247, 246, 243);">GIODRIPPS</h1>
+                </div>
 
-                    <div class = "right_header">
-                        <div class = search_bar style = "background-color: rgb(247, 246, 243); border-radius: 15px; padding: 5px;">
-                            <i class="fa-solid fa-magnifying-glass" style = "color: rgb(28,28,28); font-size:medium;"></i>
-                            <input type = text placeholder = "Search..." class = "search_input" style = "border: none; background-color: rgb(247, 246, 243); font-size:large;">
+                <div class="right_header">
+                    <div class="search_bar" style="background-color: rgb(247, 246, 243); border-radius: 15px; padding: 5px;">
+                        <i class="fa-solid fa-magnifying-glass" style="color: rgb(28,28,28); font-size: medium;"></i>
+                        <input type="text" placeholder="Search..." class="search_input" style="border: none; background-color: rgb(247, 246, 243); font-size: large;">
+                    </div>
+                    <i class="fa-regular fa-circle-question" id="help_button" style="color: rgb(247, 246, 243); font-size: xx-large;"></i>
+                    <i class="fa-solid fa-cart-shopping" id="shop_cart" style="color: rgb(247, 246, 243); font-size: xx-large;"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- ABOUT US CONTENT -->
+        <main>
+            <div class="about-container">
+
+               <section id="our-story" class="our-story">
+    <h2>Our Story</h2>
+    <p>
+        (What the helly, we can change) At GIODRIPPS, we believe that fashion is the most powerful art there is. It's movement, design, and architecture all in one.
+        Every piece is crafted to elevate your look while
+        staying true to individuality.
+    </p>
+
+    
+    <div class="story-image-container">
+        <img src="../../assets/images/aboutus/aboutus.jpeg" alt="Our Story Image">
+    </div>
+</section>
+
+
+                <section class="section">
+                    <h2>Our Values</h2>
+
+                    <div class="value-item">
+                        <i class="fa-solid fa-gem"></i>
+                        <div>
+                            <h3>Quality</h3>
+                            <p>Premium fabrics and high-end craftsmanship in every design.</p>
                         </div>
-                        <i class="fa-regular fa-circle-question" id = "help_button" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
-                        <i class="fa-solid fa-cart-shopping" id = "shop_cart" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
                     </div>
-                </div>
 
-                <!-- Dropdown Menu Content Located-->
-                <!-- Shopping Cart Content Located-->
-            </header>
-            
-            <main>
+                    <div class="value-item">
+                        <i class="fa-solid fa-bolt"></i>
+                        <div>
+                            <h3>Creativity</h3>
+                            <p>Pushing boundaries with bold, one-of-a-kind visuals.</p>
+                        </div>
+                    </div>
 
-                <div class = main_content>
-                    
-                </div>
+                    <div class="value-item">
+                        <i class="fa-solid fa-earth-americas"></i>
+                        <div>
+                            <h3>Sustainability</h3>
+                            <p>Committed to eco-conscious production and responsible fashion.</p>
+                        </div>
+                    </div>
+                </section>
 
-            </main>
-            <div class = "head-contents"></div>
-            <div class = "background_design">
-            
+                <section class="section">
+                    <h2>Our Mission</h2>
+                    <p>
+                        We aim to redefine modern streetwear by blending style, comfort, and individuality. 
+                        Fashion should empower — and we design with that purpose.
+                    </p>
+                </section>
 
+            </div>
+        </main>
 
-            
-        </div>
-    </body>    
-  
-    <script src = "../scripts/header.js"></script>
+    </div>
 
-
+    <script src="../scripts/header.js"></script>
+</body>
 </html>
