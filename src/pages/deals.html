@@ -1,56 +1,94 @@
 <!DOCTYPE html>
-<html lang = "en-US">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>[GIODRIPPS]: DEALS</title>
+<html lang="en-US">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="../styles/styles.css">
-    </head>
-        
-    <body>
-        <div class = page-cont>
-      <header id = "header">
-                <div id = "nav">
-                    <div class = "left_header">
-                        <div class = "menu">
-                            <i class="fa-solid fa-bars" id = "menu_bar" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
-                        </div>   
-                        <h1 style = "color: rgb(247, 246, 243); position: flex;">GIODRIPPS</h1>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>[GIODRIPPS]: DEALS</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/bigmans.css">
+    <link rel="stylesheet" href="../styles/deals.css">
+
+</head>
+
+<body>
+    <div class=page-cont>
+        <header id="header">
+            <div id="nav">
+                <div class="left_header">
+                    <div class="menu">
+                        <i class="fa-solid fa-bars" id="menu_bar"
+                            style="color: rgb(247, 246, 243); font-size:xx-large;"></i>
                     </div>
+                    <h1 style="color: rgb(247, 246, 243); position: flex;">GIODRIPPS</h1>
+                </div>
 
-                    <div class = "right_header">
-                        <div class = search_bar style = "background-color: rgb(247, 246, 243); border-radius: 15px; padding: 5px;">
-                            <i class="fa-solid fa-magnifying-glass" style = "color: rgb(28,28,28); font-size:medium;"></i>
-                            <input type = text placeholder = "Search..." class = "search_input" style = "border: none; background-color: rgb(247, 246, 243); font-size:large;">
+                <div class="right_header">
+                    <div class=search_bar
+                        style="background-color: rgb(247, 246, 243); border-radius: 15px; padding: 5px;">
+                        <i class="fa-solid fa-magnifying-glass" style="color: rgb(28,28,28); font-size:medium;"></i>
+                        <input type=text placeholder="Search..." class="search_input"
+                            style="border: none; background-color: rgb(247, 246, 243); font-size:large;">
+                    </div>
+                    <i class="fa-regular fa-circle-question" id="help_button"
+                        style="color: rgb(247, 246, 243); font-size:xx-large;"></i>
+                    <i class="fa-solid fa-cart-shopping" id="shop_cart"
+                        style="color: rgb(247, 246, 243); font-size:xx-large;"></i>
+                </div>
+            </div>
+
+            <!-- Dropdown Menu Content Located-->
+            <!-- Shopping Cart Content Located-->
+        </header>
+
+        <main>
+            <div class=main_content2>
+                <div class="left_content">
+                    <div class="deal_box">
+                        <div class="deal_title">
+                            <h3> Today's Deals </h3>
                         </div>
-                        <i class="fa-regular fa-circle-question" id = "help_button" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
-                        <i class="fa-solid fa-cart-shopping" id = "shop_cart" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
+                        <div class="deal_timer" id="timer1"> DEAL EXPIRES XX:XX:XX </div>
+                        <div class="deal_images">
+                            <img class="item-card" img src="../../assets/extras/yessir.png" alt="main-image" class="main_img" id="main_img">
+                            <img class="item-card" img src="../../assets/extras/yessir.png" alt="main-image" class="main_img" id="main_img">
+                            <img class="item-card" img src="../../assets/extras/yessir.png" alt="main-image" class="main_img" id="main_img">
+                            <img class="item-card" img src="../../assets/extras/yessir.png" alt="main-image" class="main_img" id="main_img">
+                        </div>
                     </div>
                 </div>
-
-                <!-- Dropdown Menu Content Located-->
-                <!-- Shopping Cart Content Located-->
-            </header>
-            
-            <main>
-
-                <div class = main_content>
-                    
+                <div class="right_content">
+                    <div class="deal_box">
+                        <div class="deal_title">
+                            <h3> Monthly Deals </h3>
+                        </div>
+                        <div class="deal_timer" id="timer2"> DEAL EXPIRES XX:XX:XX </div>
+                        <div class="deal_images">
+                            <img class="item-card" img src="../../assets/extras/yessir.png" alt="main-image" class="main_img" id="main_img">
+                            <img class="item-card" img src="../../assets/extras/yessir.png" alt="main-image" class="main_img" id="main_img">
+                            <img class="item-card" img src="../../assets/extras/yessir.png" alt="main-image" class="main_img" id="main_img">
+                            <img class="item-card" img src="../../assets/extras/yessir.png" alt="main-image" class="main_img" id="main_img">
+                        </div>
+                    </div>
                 </div>
+            </div>
+    </div>
 
-            </main>
-            <div class = "head-contents"></div>
-            <div class = "background_design">
-            
+    </main>
+    <div class="head-contents"></div>
+    <div class="background_design">
 
 
-            
-        </div>
-    </body>    
-  
-   <script src = "../scripts/header.js"></script>
 
-   
+
+    </div>
+</body>
+
+<script src="../scripts/header.js"></script>
+<script src="../scripts/deals.js"></script>
+
 </html>
