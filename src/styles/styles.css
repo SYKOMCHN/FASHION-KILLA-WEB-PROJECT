@@ -1,10 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     width: 100%;
     background-color: rgb(247, 246, 243);
-    font-family: sans-serif; /* body font */
+    font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
 .page-cont {
@@ -20,7 +29,6 @@ body {
     background-color: rgb(28, 28, 28);
     width:100vw;
     z-index: 100;
-
 }
 
  .navigation {
@@ -77,12 +85,9 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 0;
+    flex: 1;
 }
 
-.background-design {
-    position: absolute;
-    z-index:-1;
-}
 
 
 /* empty cart / no results after searching */
@@ -97,4 +102,12 @@ body {
     border-radius: 12px;
     background-color: rgba(255, 249, 227, 0.1);
     margin: 12px;
+}
+
+/*[footer content styles]---------------------------------------------------------------------------------------*/
+
+
+.background-design {
+    position: absolute;
+    z-index:-1;
 }

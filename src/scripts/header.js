@@ -68,7 +68,7 @@ function dropdownMenu() {
                          listItem.style.boxShadow = "0px 5px rgba(194,41,12, 0.75)";
                     });
                     listItem.addEventListener("mouseleave", () => {
-                        listItem.style.backgroundColor = "rgb(247, 246, 243);";
+                        listItem.style.backgroundColor = "rgb(247, 246, 243)";
                         listItem.style.boxShadow = "0px 5px rgba(255, 249, 227, 0.75)";
                     });
 
@@ -131,15 +131,17 @@ function dropdownMenu() {
                             }
                         }
 
-
                     });
                     menuList.appendChild(listItem);
+
+
                 }
                 else {
                     let spacer = document.createElement("div");
                     spacer.style.height = "22.5px";
                     menuList.appendChild(spacer);
                 }
+                
             }
 
         }
