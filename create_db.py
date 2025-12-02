@@ -99,7 +99,7 @@ INSERT INTO products (name, price, category, image, description, stock) VALUES
 ('Black ankle strap wedge heel shoe', 76.99, 'womens', 'assets/images/womens/anklestrapwedgeheelshoe.jpg', 'Heel height: 3.5 inches. AIRFIT®. Flexible technical latex foam insole, designed for enhanced comfort.', 200),
 ('Black bronco leather bomber jacket', 47.99, 'womens', 'assets/images/womens/broncoleatherbomberjacket.jpg', 'Crafted from durable vegan leather, this classic bomber jacket offers a smooth, flexible fit with a sleek zip closure and snap-button wrist cuffs for an added touch of structure.', 200),
 ('Black rib spaghetti tank', 12.99, 'womens', 'assets/images/womens/theribs.jpg', 'A year-round essential, effortlessly versatile for layering or wearing solo. Designed with a scoop neck, spaghetti straps, and a fine rib texture that provides the perfect amount of hold—no bra required.', 200),
-('Grey Mid Rise Pleated Wide Leg Trousers', 34.99, 'womens', 'assets/images/womens/greypants.jpg', 'A regular fit type with a mid rise waist line.', 200),
+('Grey Mid Rise Pleated Wide Leg Trousers', 34.99, 'womens', 'assets/images/womens/greypants.png', 'A regular fit type with a mid rise waist line.', 200),
 ('Black Nike Air Monarch IV', 99.99, 'womens', 'assets/images/womens/nike.jpg', 'Nike Air Monarch IV sets you up for working out with durable leather on top for support. Lightweight foam teams up with Nike Air cushioning for comfort in every stride.', 200)
 
 
