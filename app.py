@@ -235,9 +235,16 @@ def purchase():
 
 # collection stuff here
 FITS = [
-    {"id": 1, "title": "Fall Streetwear", "image": "assets/images/black&Whitephoto.jpeg", "product_ids": [1, 2, 3]},
-    {"id": 2, "title": "Minimal Core",   "image": "assets/extras/yessir.png", "product_ids": [2, 4]},
-    {"id": 3, "title": "Casual Weekend", "image": "assets/extras/yessir.png", "product_ids": [1, 5, 3, 4]},
+    {"id": 1, "title": "Fall Streetwear", "image": "assets/images/fits/improved_street.jpg", "product_ids": [55, 56, 57]},
+    {"id": 2, "title": "Fall Streetwear", "image": "assets/images/fits/style_2.jpg", "product_ids": [58, 59, 60, 57]},
+    {"id": 3, "title": "Fall Streetwear", "image": "assets/images/fits/style_3.jpg", "product_ids": [61, 62, 63, 64]},
+    {"id": 4, "title": "Fall Streetwear", "image": "assets/images/fits/style_4.jpg", "product_ids": [65, 66, 67]},
+    {"id": 5, "title": "Fall Streetwear", "image": "assets/images/fits/style_5.jpg", "product_ids": [68, 62]},
+
+    {"id": 6, "title": "Fall Streetwear", "image": "assets/images/fits/style_2_women.jpg", "product_ids": [69, 70, 71]},
+    {"id": 7, "title": "Fall Streetwear", "image": "assets/images/fits/style_3_women.jpg", "product_ids": [72, 73, 74]},
+    {"id": 8, "title": "Fall Streetwear", "image": "assets/images/fits/style_4_women.jpg", "product_ids": [75, 76, 77, 78]},
+    {"id": 8, "title": "Fall Streetwear", "image": "assets/images/fits/style_1_woman.jpg", "product_ids": [79, 80, 81, 82]},
 ]
 
 @app.route("/src/pages/collection.html")
