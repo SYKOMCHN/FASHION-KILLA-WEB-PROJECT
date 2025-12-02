@@ -7,90 +7,89 @@
 
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/help.css">
+    <link rel="stylesheet" href="../styles/help-messages.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
         
 <body>
     <div class="page-cont">
-        <header id = "header">
-                <div id = "nav">
-                    <div class = "left_header">
-                        <div class = "menu">
-                            <i class="fa-solid fa-bars" id = "menu_bar" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
-                        </div>   
-                        <h1 style = "color: rgb(247, 246, 243); position: flex;">GIODRIPPS</h1>
-                    </div>
-
-                    <div class = "right_header">
-                        <div class = search_bar style = "background-color: rgb(247, 246, 243); border-radius: 15px; padding: 5px;">
-                            <i class="fa-solid fa-magnifying-glass" style = "color: rgb(28,28,28); font-size:medium;"></i>
-                            <input type = text placeholder = "Search..." class = "search_input" style = "border: none; background-color: rgb(247, 246, 243); font-size:large;">
-                        </div>
-                        <i class="fa-regular fa-circle-question" id = "help_button" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
-                        <i class="fa-solid fa-cart-shopping" id = "shop_cart" style = "color: rgb(247, 246, 243); font-size:xx-large;"></i>
-                    </div>
+        <header id="header">
+            <div id="nav">
+                <div class="left_header">
+                    <div class="menu">
+                        <i class="fa-solid fa-bars" id="menu_bar" style="color: rgb(247, 246, 243); font-size:xx-large;"></i>
+                    </div>   
+                    <h1 style="color: rgb(247, 246, 243); position: flex;">GIODRIPPS</h1>
                 </div>
 
-                <!-- Dropdown Menu Content Located-->
-                <!-- Shopping Cart Content Located-->
-            </header>
-            
-      <main>
-    <div class="help-container">
+                <div class="right_header">
+                    <div class="search_bar" style="background-color: rgb(247, 246, 243); border-radius: 15px; padding: 5px;">
+                        <i class="fa-solid fa-magnifying-glass" style="color: rgb(28,28,28); font-size:medium;"></i>
+                        <input type="text" placeholder="Search..." class="search_input" style="border: none; background-color: rgb(247, 246, 243); font-size:large;">
+                    </div>
+                    <i class="fa-regular fa-circle-question" id="help_button" style="color: rgb(247, 246, 243); font-size:xx-large;"></i>
+                    <i class="fa-solid fa-cart-shopping" id="shop_cart" style="color: rgb(247, 246, 243); font-size:xx-large;"></i>
+                </div>
+            </div>
+        </header>
 
-        <!-- FAQ SECTION -->
-        <h2 class="section-title">Frequently Asked Questions</h2>
+        <main>
+            <div class="help-container">
 
-        <div class="faq">
+                <!-- FAQ SECTION -->
+                <h2 class="section-title">Frequently Asked Questions</h2>
 
-            <details class="faq-item">
-                <summary>
-                    <i class="fa-solid fa-truck"></i>
-                    How long does shipping take?
-                </summary>
-                <p>Shipping usually takes 3–5 business days depending on your region.</p>
-            </details>
+                <div class="faq">
 
-            <details class="faq-item">
-                <summary>
-                    <i class="fa-solid fa-rotate-left"></i>
-                    How do I return an item?
-                </summary>
-                <p>You can request a return through your order page or contact support.</p>
-            </details>
+                    <details class="faq-item">
+                        <summary>
+                            <i class="fa-solid fa-truck"></i>
+                            How long does shipping take?
+                        </summary>
+                        <p>Shipping usually takes 3–5 business days depending on your region.</p>
+                    </details>
 
-            <details class="faq-item">
-                <summary>
-                    <i class="fa-solid fa-globe"></i>
-                    Do you ship internationally?
-                </summary>
-                <p>Yes! We offer worldwide shipping. Rates vary by country.</p>
-            </details>
+                    <details class="faq-item">
+                        <summary>
+                            <i class="fa-solid fa-rotate-left"></i>
+                            How do I return an item?
+                        </summary>
+                        <p>You can request a return through your order page or contact support.</p>
+                    </details>
 
-        </div>
+                    <details class="faq-item">
+                        <summary>
+                            <i class="fa-solid fa-globe"></i>
+                            Do you ship internationally?
+                        </summary>
+                        <p>Yes! We offer worldwide shipping. Rates vary by country.</p>
+                    </details>
 
-        <!-- HELP FORM -->
-        <h2 class="section-title">What should we help you with?</h2>
+                </div>
 
-        <form class="help-form">
+                <!-- HELP FORM -->
+                <h2 class="section-title">What should we help you with?</h2>
 
-            <label>Name:</label>
-            <input type="text" name="name" required>
+                <form class="help-form">
 
-            <label>Email:</label>
-            <input type="email" name="email" required>
+                    <label>Name:</label>
+                    <input type="text" name="name" required>
 
-            <label>Describe the issue:</label>
-            <textarea name="issue" rows="5" required></textarea>
+                    <label>Email:</label>
+                    <input type="email" name="email" required>
 
-            <button type="submit" class="submit-btn">Submit</button>
+                    <label>Describe the issue:</label>
+                    <textarea name="issue" rows="5" required></textarea>
 
-        </form>
+                    <button type="submit" class="submit-btn">Submit</button>
 
-    </div>
-</main>
+                    <!-- MESSAGE BOX -->
+                    <div id="formMessage" class="form-message"></div>
 
+                </form>
 
+            </div>
+        </main>
 
         <div class="head-contents"></div>
         <div class="background_design"></div>
@@ -98,6 +97,51 @@
     </div>
 
     <script src="../scripts/header.js"></script>
+
+    <!-- ✨ CUSTOM TEXT POPUP VALIDATION SCRIPT -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.querySelector(".help-form");
+        const messageBox = document.getElementById("formMessage");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const name = form.querySelector("input[name='name']").value.trim();
+            const email = form.querySelector("input[name='email']").value.trim();
+            const issue = form.querySelector("textarea[name='issue']").value.trim();
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Reset visibility
+            messageBox.style.display = "none";
+            messageBox.className = "form-message";
+
+            // Email check
+            if (!emailPattern.test(email)) {
+                messageBox.textContent = "⚠ Please enter a valid email address.";
+                messageBox.classList.add("error-msg");
+                messageBox.style.display = "block";
+                return;
+            }
+
+            // Issue check
+            if (issue.length === 0) {
+                messageBox.textContent = "⚠ Please describe the issue before submitting.";
+                messageBox.classList.add("error-msg");
+                messageBox.style.display = "block";
+                return;
+            }
+
+            // Success message
+            messageBox.textContent = "✅ Message sent successfully!";
+            messageBox.classList.add("success-msg");
+            messageBox.style.display = "block";
+
+            form.reset();
+        });
+    });
+    </script>
 
 </body>   
 </html>
