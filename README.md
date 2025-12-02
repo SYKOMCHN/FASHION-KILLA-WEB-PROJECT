@@ -204,7 +204,7 @@ CREATE TABLE products (
 
 ---
 
-## 🔐 Configuration
+## Configuration
 
 ### Session Management
 - Default session lifetime: 30 days
@@ -222,7 +222,7 @@ CREATE TABLE products (
 
 ---
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
