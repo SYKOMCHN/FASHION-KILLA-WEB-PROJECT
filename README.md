@@ -156,7 +156,7 @@ FASHION-KILLA-WEB-PROJECT/
 
 ---
 
-## 💾 Database Schema
+## Database Schema
 
 ### Products Table
 ```sql
