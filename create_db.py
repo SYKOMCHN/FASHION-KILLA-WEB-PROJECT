@@ -72,7 +72,39 @@ INSERT INTO products (name, price, category, image, description, stock) VALUES
 ('Light Pink T-Shirt', 12.99, 'youth', 'assets/images/youth/lightpinktshirt.jpeg', 'Soft light-pink tee perfect for everyday play and school.', 200),
 ('Pink Sweat Pants', 19.99, 'youth', 'assets/images/youth/pinksweatpants.webp', 'Lightweight kids sweatpants in pink with elastic waistband.', 200),
 ('White Socks', 6.99, 'youth', 'assets/images/youth/whitesocks.webp', 'Basic white socks for kids with breathable cotton blend.', 200),
-('Yellow Shirt', 12.99, 'youth', 'assets/images/youth/yellowshirt.webp', 'Bright yellow kids shirt made from comfortable, easy-care fabric.', 200)
+('Yellow Shirt', 12.99, 'youth', 'assets/images/youth/yellowshirt.webp', 'Bright yellow kids shirt made from comfortable, easy-care fabric.', 200),
+('Faux fur hooded jacket', 119.99, 'mens', 'assets/images/mens/furjacket.jpg', 'Faux fur hooded jacket designed to keep you warm and give you an elegant look.', 200),
+('Black Baggy jeans with studs', 79.99, 'mens', 'assets/images/mens/dotteddenimpants.jpg', 'Black baggy denim jeans with studs made with real denim cotton', 200),
+('Lace-up ankle boots', 89.99, 'mens', 'assets/images/mens/boots.jpg', 'Black lace-up ankle boots. Flexible technical latex foam insole, designed to offer greater comfort.', 200),
+('Grey Zip-up sweatshirt', 59.99, 'mens', 'assets/images/mens/zipup.jpg', 'Grey Zip-up sweatshirt made to keep you comfortable and give you a smart look.', 200),
+('Slim-fit henley long sleeve T-shirt', 25.99, 'mens', 'assets/images/mens/henley.jpg', 'An off white slim fit style henley shirt made with real cotton', 200),
+('Basic grey beanie', 5.99, 'mens', 'assets/images/mens/basicbeanie.jpg', 'A grey basic beanie that goes well with all of your outfits', 200),
+('Oversize burgundy felt coat ', 179.99, 'mens', 'assets/images/mens/oversizecoat.jpg', 'An oversized burgundy felt coat designed to keep you warm at all times.', 200),
+('Black Tailored flared trousers', 67.99, 'mens', 'assets/images/mens/tailoredFlaredTrousers.jpg', 'Tailored flared trouses that are designed to give you a mix of baggy and straight pants in one.', 200),
+('Leather effect gloves', 15.99, 'mens', 'assets/images/mens/leathereffectgloves.jpg', 'Made with real leather to give you that shiny look and the warmth.', 200),
+('Loafers with chunky soles', 69.99, 'mens', 'assets/images/mens/loaferswithchunkysoles.jpg', 'STARFIT®. Flexible technical latex foam insole, designed to offer greater comfort.', 200),
+('Light blue Sweater with polo collar', 49.99, 'mens', 'assets/images/mens/sweaterwithpolocollar.jpg', 'Ligth blue polo collar sweater made for casual wear and warmth.', 200),
+('Dark grey balloon fit flannel pants', 69.99, 'mens', 'assets/images/mens/balloonfitflannelpants.jpg', 'A ballon cut pair of pants made for that baggy look that everyone seeks for.', 200),
+('Embroidered LEATHER clogs with buckle', 79.99, 'mens', 'assets/images/mens/embroideredleatherclogswithbuckle.jpg', 'AIRFIT®. Flexible technical latex foam insole, designed to offer greater comfort.', 200),
+('Burgundy leather effect boxy fit jacket', 79.99, 'mens', 'assets/images/mens/leathereffectboxyfitjacket.jpg', 'Burgundy boxy leather fitted jacket designed to give you that wide look.', 200),
+('Black oversize leather effect jacket', 79.99, 'womens', 'assets/images/womens/oversizeleather.jpg', 'An oversize black leather jacket made with poleyster.', 200),
+('White oversize balloon T-shirt dress', 29.99, 'womens', 'assets/images/womens/oversizeballoont.jpg', 'Designed to be layered by another outwear piece.', 200),
+('Black heeled boots with buckle', 128.99, 'womens', 'assets/images/womens/heeledbootswithbuckle.jpg', 'Heel height: 9 cm. Leg height: 37 cm. Leg width: 18 cm. AIRFIT®. Flexible technical latex foam insole, designed to offer greater comfort.', 200),
+('Asymmetric striped knit sweater', 34.99, 'womens', 'assets/images/womens/asymmetricstripedknitsweater.jpg', 'A stripped knitted sweater with a shoulder drop.', 200),
+('Grey plush barrel pants with stoppers', 45.99, 'womens', 'assets/images/womens/plushbarrelpantswithstoppers.jpg', 'Grey plush barrel sweat pants made with real cotton designed to keep you comfortable and warm.', 200),
+('Black high-heel ballerinas', 47.99, 'womens', 'assets/images/womens/highheelballerinas.jpg', 'Heel height: 4 cm. AIRFIT®. Flexible technical latex foam insole, designed to offer greater comfort.', 200),
+('Black long sleeve floral top', 34.99, 'womens', 'assets/images/womens/longsleevefloraltop.jpg', 'Blacl floral long sleeve with exposed shoulders.', 200),
+('Black flared draped flower trousers', 49.99, 'womens', 'assets/images/womens/flareddrapedflowertrousers.jpg', 'Slim fitted black flared draped flower trousers.', 200),
+('Black faux fur bag', 45.99, 'womens', 'assets/images/womens/fauxfurbag.jpg', 'Black faux fur bag made with real fur.', 200),
+('Black ankle strap wedge heel shoe', 76.99, 'womens', 'assets/images/womens/anklestrapwedgeheelshoe.jpg', 'Heel height: 3.5 inches. AIRFIT®. Flexible technical latex foam insole, designed for enhanced comfort.', 200),
+('Black bronco leather bomber jacket', 47.99, 'womens', 'assets/images/womens/broncoleatherbomberjacket.jpg', 'Crafted from durable vegan leather, this classic bomber jacket offers a smooth, flexible fit with a sleek zip closure and snap-button wrist cuffs for an added touch of structure.', 200),
+('Black rib spaghetti tank', 12.99, 'womens', 'assets/images/womens/theribs.jpg', 'A year-round essential, effortlessly versatile for layering or wearing solo. Designed with a scoop neck, spaghetti straps, and a fine rib texture that provides the perfect amount of hold—no bra required.', 200),
+('Grey Mid Rise Pleated Wide Leg Trousers', 34.99, 'womens', 'assets/images/womens/greypants.jpg', 'A regular fit type with a mid rise waist line.', 200),
+('Black Nike Air Monarch IV', 99.99, 'womens', 'assets/images/womens/nike.jpg', 'Nike Air Monarch IV sets you up for working out with durable leather on top for support. Lightweight foam teams up with Nike Air cushioning for comfort in every stride.', 200)
+
+
+
+
 """
 
 
