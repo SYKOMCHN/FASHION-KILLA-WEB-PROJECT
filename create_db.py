@@ -75,7 +75,7 @@ INSERT INTO products (name, price, category, image, description, stock) VALUES
 ('Yellow Shirt', 12.99, 'youth', 'assets/images/youth/yellowshirt.webp', 'Bright yellow kids shirt made from comfortable, easy-care fabric.', 200),
 ('Faux fur hooded jacket', 119.99, 'mens', 'assets/images/mens/furjacket.jpg', 'Faux fur hooded jacket designed to keep you warm and give you an elegant look.', 200),
 ('Black Baggy jeans with studs', 79.99, 'mens', 'assets/images/mens/dotteddenimpants.jpg', 'Black baggy denim jeans with studs made with real denim cotton', 200),
-('Lace-up ankle boots', 89.99, 'mens', 'assets/images/mens/boots.jpg', 'Black lace-up ankle boots. Flexible technical latex foam insole, designed to offer greater comfort.', 200),
+('Lace-up ankle boots', 89.99, 'mens', 'assets/images/mens/boot.jpg', 'Black lace-up ankle boots. Flexible technical latex foam insole, designed to offer greater comfort.', 200),
 ('Grey Zip-up sweatshirt', 59.99, 'mens', 'assets/images/mens/zipup.jpg', 'Grey Zip-up sweatshirt made to keep you comfortable and give you a smart look.', 200),
 ('Slim-fit henley long sleeve T-shirt', 25.99, 'mens', 'assets/images/mens/henley.jpg', 'An off white slim fit style henley shirt made with real cotton', 200),
 ('Basic grey beanie', 5.99, 'mens', 'assets/images/mens/basicbeanie.jpg', 'A grey basic beanie that goes well with all of your outfits', 200),
