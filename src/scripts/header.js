@@ -258,39 +258,118 @@ function dropCart(){
 
         //CART CONTENT
         
-        // helper that fetches and renders the cart contents
+        // build scrollable content + fixed footer so dropdown doesn't overflow
+        const contentWrap = document.createElement("div");
+        contentWrap.style.position = "absolute";
+        contentWrap.style.top = "0";
+        contentWrap.style.left = "0";
+        contentWrap.style.right = "0";
+        contentWrap.style.bottom = "64px";          // leave footer space
+        contentWrap.style.overflowY = "auto";
+        contentWrap.style.padding = "12px";
+        contentWrap.style.boxSizing = "border-box";
+        cartPage.appendChild(contentWrap);
+
+        const footer = document.createElement("div");
+        footer.style.position = "absolute";
+        footer.style.left = "0";
+        footer.style.right = "0";
+        footer.style.bottom = "0";
+        footer.style.height = "64px";
+        footer.style.padding = "8px 12px";
+        footer.style.boxSizing = "border-box";
+        footer.style.display = "flex";
+        footer.style.alignItems = "center";
+        footer.style.justifyContent = "space-between";
+        footer.style.background = "rgb(247, 246, 243)";
+        footer.style.gap = "10px";
+        cartPage.appendChild(footer);
+
+        // helper that fetches and renders cart + (re)attaches handlers
         function refreshCart() {
             fetch("/cart_contents").then(r => r.text()).then(html => {
-                cartPage.innerHTML = html;
+                // put server fragment into the scrollable area
+                contentWrap.innerHTML = html;
 
-                // attach remove handlers 
-                cartPage.querySelectorAll(".cart-remove").forEach(btn => {
-                    // use onclick to overwrite any existing listener
-                    btn.onclick = function (e) {
-                        const id = this.dataset.id;
-                        fetch("/remove_from_cart/" + id, { method: "POST" })
-                            .then(() => {
-                                // render again after removal
-                                refreshCart();
-                            });
-                    };
+                // try to find the total element inside returned HTML (server returns something like "Total: $123.45")
+                let totalEl = Array.from(contentWrap.querySelectorAll("div,span,p,strong")).find(el => {
+                    const t = (el.textContent || "").trim();
+                    return t.startsWith("Total:") || t.indexOf("Total") !== -1 && /\$\d/.test(t);
                 });
 
-                // attach checkout button
-                const checkout = cartPage.querySelector("#checkout_btn");
-                if (checkout) {
-                    checkout.onclick = () => {
+                // try to find an existing checkout button in the content
+                const checkoutBtn = contentWrap.querySelector("#checkout_btn");
+
+                // build footer content: left = total, right = checkout button
+                footer.innerHTML = ""; // clear
+
+                const totalBox = document.createElement("div");
+                totalBox.style.display = "flex";
+                totalBox.style.alignItems = "center";
+                totalBox.style.gap = "8px";
+                totalBox.style.flex = "1";
+
+                if (totalEl) {
+                    // clone the text to avoid removing structured layout from contentWrap
+                    const cloned = document.createElement("div");
+                    cloned.innerHTML = totalEl.innerHTML || totalEl.textContent;
+                    cloned.style.fontWeight = "700";
+                    cloned.style.fontSize = "0.95rem";
+                    cloned.id = "footer_total";
+                    totalBox.appendChild(cloned);
+                    // optionally remove the original totalEl from content so it's not duplicated
+                    try { totalEl.remove(); } catch (e) {}
+                } else {
+                    const placeholder = document.createElement("div");
+                    placeholder.textContent = "Total: $0.00";
+                    placeholder.style.fontWeight = "700";
+                    placeholder.id = "footer_total";
+                    totalBox.appendChild(placeholder);
+                }
+
+                footer.appendChild(totalBox);
+
+                if (checkoutBtn) {
+                    // move checkout button into footer
+                    checkoutBtn.style.padding = "10px 14px";
+                    checkoutBtn.style.borderRadius = "8px";
+                    checkoutBtn.style.cursor = "pointer";
+                    footer.appendChild(checkoutBtn);
+
+                    checkoutBtn.onclick = () => {
                         if (window.location.href.indexOf("src/pages") > -1) {
                             window.location.href = "checkout.html";
                         } else {
                             window.location.href = "src/pages/checkout.html";
                         }
                     };
+                } else {
+                    // show disabled checkout if none
+                    const placeholderBtn = document.createElement("button");
+                    placeholderBtn.disabled = true;
+                    placeholderBtn.textContent = "Checkout";
+                    placeholderBtn.style.padding = "10px 14px";
+                    placeholderBtn.style.borderRadius = "8px";
+                    placeholderBtn.style.border = "none";
+                    placeholderBtn.style.background = "#cfcfcf";
+                    footer.appendChild(placeholderBtn);
                 }
             });
         }
 
-        // make refreshCart callable from other scripts
+        // delegated click handler for remove buttons (works after refreshCart updates innerHTML)
+        contentWrap.addEventListener("click", function (ev) {
+            const btn = ev.target.closest(".cart-remove");
+            if (!btn) return;
+            const id = btn.dataset.id;
+            fetch("/remove_from_cart/" + id, { method: "POST" })
+                .then(() => {
+                    // re-render cart so totals + items update; keeps footer in place
+                    refreshCart();
+                });
+        });
+
+        // expose refreshCart for other scripts (add-to-cart)
         window.refreshCart = refreshCart;
 
         // initial render
