@@ -238,8 +238,8 @@ function dropCart(){
 
         cartDrop.style.position = "absolute";
         cartDrop.style.right = "0vw";
-        cartDrop.style.width = "20vw";
-        cartDrop.style.height = "40vh";
+        cartDrop.style.width = "23vw";
+        cartDrop.style.height = "100vh";
         cartDrop.style.padding = "20px";
         cartDrop.style.backgroundColor = "rgb(28,28,28)";
         cartDrop.style.margin = "0";
@@ -251,7 +251,7 @@ function dropCart(){
         let cartPage = document.createElement("div");
         cartPage.style.position = "absolute";
         cartPage.style.width = "20vw";
-        cartPage.style.height = "40vh";
+        cartPage.style.height = "80vh";
         cartPage.style.backgroundColor = "rgb(247, 246, 243)";
         cartDrop.appendChild(cartPage);
 
