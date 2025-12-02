@@ -15,9 +15,9 @@ A modern, full-stack fashion e-commerce web application built with Flask, SQLite
 - **SQLite3** - Embedded relational database
 
 ### Frontend
-- **HTML5** - Semantic markup
-- **CSS3** - Modern styling with animations
-- **JavaScript (ES6)** - Interactive components and client-side logic
+- **HTML** - Semantic markup
+- **CSS** - Modern styling with animations
+- **JavaScript** - Interactive components and client-side logic
 - **Font Awesome 7** - Icon library for UI elements
 
 ### Database
